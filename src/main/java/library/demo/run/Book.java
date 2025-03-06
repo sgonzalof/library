@@ -6,16 +6,6 @@ public class Book {
 	private String writer;
 	private int year;
 	
-	public void registerBook (int i, String t, String w, int y) {
-		// metodo utilizado para meter libro en el inventario
-		// como argumento le tengo que pasar todos los datos del libro
-		
-	}
-	
-	public void unregisterBook (int i) {
-		// metodo utilizado para dar de baja un libro en el inventario
-		// como argumento le paso el isbn que es el id del libro en DB
-	}
 
 	public int getIsbn() {
 		return isbn;
@@ -33,7 +23,7 @@ public class Book {
 		this.title = title;
 	}
 
-	public String getWriter() {
+	public String getWriter() {	
 		return writer;
 	}
 
@@ -41,13 +31,15 @@ public class Book {
 		this.writer = writer;
 	}
 
-	public int getYear() {
-		return year;
-	}
-
-	public void setYear(int year) {
-		this.year = year;
-	}
+	public int getYear() {  // returns the value (int) of the atribute year 
+		return year;        // of the class book. 
+	}                       // while its public you can call it from outside
+							// of the class book
+	
+	
+	public void setYear(int year) { // void means there no need for the return sentence
+		this.year = year;			// it sets the atribute year the value that I give 
+	}								// as argument to the method
 	
 
 }
