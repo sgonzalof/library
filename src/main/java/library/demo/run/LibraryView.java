@@ -2,7 +2,7 @@ package library.demo.run;
 
 import javax.swing.JFrame;
 
-import net.miginfocom.swing.MigLayout;
+//import net.miginfocom.swing.MigLayout;
 import javax.swing.JButton;
 import java.awt.GridLayout;
 import java.awt.GridBagLayout;
@@ -26,6 +26,8 @@ public class LibraryView {
 	protected JFrame frmLibrary;
 	private JTable table;
 	private JTable table_1;
+	private JTable table_2;
+
 	
 	public LibraryView() {
 		initialize();
@@ -34,12 +36,13 @@ public class LibraryView {
 	private void initialize() {
 		frmLibrary = new JFrame();
 		frmLibrary.setTitle("LIBRARY MANAGER");
-		frmLibrary.setBounds(0, 0, 1080, 720);
+		frmLibrary.setBounds(40, 40, 1080, 660);
 		frmLibrary.getContentPane().setLayout(null);
 		
+		// first panel, borrow book and return book buttons
 		
 		JPanel topPanel = new JPanel();
-		topPanel.setBounds(10, 0, 1044, 50);
+		topPanel.setBounds(10, 10, 1044, 50);
 		
 		frmLibrary.getContentPane().add(topPanel);
 		topPanel.setLayout(new GridLayout(0, 2, 10, 10));
@@ -55,8 +58,11 @@ public class LibraryView {
 		topPanel.add(returnBookButton);
 		frmLibrary.setVisible(true);
 		
+		
+		// second panel, library buttons
+		
 		JPanel secondPanel = new JPanel();
-		secondPanel.setBounds(10,60,1044,50);
+		secondPanel.setBounds(10, 70, 1044, 50);
 		
 		frmLibrary.getContentPane().add(secondPanel);
 		secondPanel.setLayout(new GridLayout(0, 4, 10,10));
@@ -73,8 +79,11 @@ public class LibraryView {
 		JButton modifyBookButton = new JButton("Modify Book");
 		secondPanel.add(modifyBookButton);
 		
+		
+		// third panel, library table
+		
 		JPanel thirdPanel = new JPanel();
-		thirdPanel.setBounds(10,120,1044,200);
+		thirdPanel.setBounds(10, 130, 1044, 200);
 		
 		frmLibrary.getContentPane().add(thirdPanel);
 		thirdPanel.setLayout(new GridLayout(0, 1, 10, 10));
@@ -93,9 +102,10 @@ public class LibraryView {
 		scrollPane.setViewportView(table_1);
 		
 		
+		// fourth panel, member administration buttons
 		
 		JPanel fourthPanel = new JPanel();
-		fourthPanel.setBounds(10,220,1044,50);
+		fourthPanel.setBounds(10,350,1044,50);
 		
 		frmLibrary.getContentPane().add(fourthPanel);
 		fourthPanel.setLayout(new GridLayout(0, 5, 10, 10));
@@ -116,35 +126,29 @@ public class LibraryView {
 		fourthPanel.add(showDelaysButton);
 		
 		
+		// bottom panel, member table
+		
 		JPanel bottomPanel = new JPanel();
-		fourthPanel.setBounds(10,400,1044,50);
+		bottomPanel.setBounds(10,410,1044,200);
 		
-		frmLibrary.getContentPane().add(fourthPanel);
-		fourthPanel.setLayout(new GridLayout(0, 1, 10, 10));
+		frmLibrary.getContentPane().add(bottomPanel);
+		bottomPanel.setLayout(new GridLayout(0, 1, 10, 10));
 		
-		JScrollPane scrollPane1 = new JScrollPane();
-		thirdPanel.add(scrollPane1);
+		JScrollPane scrollPane2 = new JScrollPane();
+		bottomPanel.add(scrollPane2);
 		
 		table_2 = new JTable();
 		table_2.setModel(new DefaultTableModel(
 			new Object[][] {
 			},
 			new String[] {
-				"Member Name", "id", "Age", "Has a Book?"
+				"Name", "Member Id", "Has a book", "Staff", "Age", "Tlf"
 			}
 		));
-		scrollPane.setViewportView(table_2);
+		scrollPane2.setViewportView(table_2);
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+
+			
 
 	}
 }
