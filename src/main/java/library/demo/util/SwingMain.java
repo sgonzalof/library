@@ -3,7 +3,10 @@ package library.demo.util;
 //import com.formdev.flatlaf.FlatDarkLaf;
 
 import java.awt.EventQueue;
+import java.awt.GridLayout;
+
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 import javax.swing.UIManager;
 import javax.swing.UIManager.LookAndFeelInfo;
 import javax.swing.BoxLayout;
@@ -44,23 +47,37 @@ public class SwingMain {
 				        if ("Nimbus".equals(info.getName())) {
 				            UIManager.setLookAndFeel(info.getClassName());
 				            
-			                UIManager.put("control", new Color(30, 30, 30)); // Background color
-			                UIManager.put("info", new Color(50, 50, 50));
-			                UIManager.put("nimbusBase", new Color(40, 40, 40)); // Base color for components
-			                UIManager.put("nimbusAlertYellow", new Color(255, 220, 0));
-			                UIManager.put("nimbusDisabledText", new Color(100, 100, 100));
-			                UIManager.put("nimbusFocus", new Color(80, 80, 80));
-			                UIManager.put("nimbusGreen", new Color(0, 200, 0));
-			                UIManager.put("nimbusInfoBlue", new Color(50, 100, 255));
-			                UIManager.put("nimbusLightBackground", new Color(20, 20, 20));
-			                UIManager.put("nimbusOrange", new Color(255, 120, 0));
+			                // Definimos los colores principales
+			                Color darkGray = new Color(43, 43, 43); // #2B2B2B
+			                Color lightBlue = new Color(87, 127, 143); // #8AFF80
+
+			                // Aplicamos los colores personalizados a Nimbus
+			                UIManager.put("control", darkGray);
+			                UIManager.put("info", darkGray);
+			                UIManager.put("nimbusBase", darkGray);
+			                UIManager.put("nimbusAlertYellow", lightBlue);
+			                UIManager.put("nimbusDisabledText", new Color(120, 120, 120));
+			                UIManager.put("nimbusFocus", lightBlue);
+			                UIManager.put("nimbusGreen", lightBlue);
+			                UIManager.put("nimbusInfoBlue", lightBlue);
+			                UIManager.put("nimbusLightBackground", darkGray);
+			                UIManager.put("nimbusOrange", lightBlue);
 			                UIManager.put("nimbusRed", new Color(200, 50, 50));
-			                UIManager.put("nimbusSelectedText", new Color(255, 255, 255));
-			                UIManager.put("nimbusSelectionBackground", new Color(60, 60, 60));
-			                UIManager.put("text", new Color(200, 200, 200)); // Text color
-				            
-				            
-				            
+			                UIManager.put("nimbusSelectedText", Color.BLACK);
+			                UIManager.put("nimbusSelectionBackground", lightBlue);
+			                UIManager.put("text", Color.WHITE);
+			                
+			                // Set Nimbus dark menu bar properties
+			                UIManager.put("MenuBar.background", Color.BLACK);
+			                UIManager.put("Menu.background", Color.BLACK);
+			                UIManager.put("Menu.foreground", Color.WHITE);
+			                UIManager.put("MenuItem.background", Color.BLACK);
+			                UIManager.put("MenuItem.foreground", Color.WHITE);
+			                UIManager.put("Menu[Selected].background", new Color(60, 60, 60)); // Dark gray when selected
+			                UIManager.put("Menu[Selected].foreground", Color.WHITE);
+			                
+			                
+
 				            
 				            SwingMain window = new SwingMain();
 				            						
@@ -109,29 +126,57 @@ public class SwingMain {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
+		frame = new LibraryFrame();
 		frame.setTitle("LIBRARY LOGIN");
-		frame.setBounds(0, 0, 287, 185);
+		/*
+		 * 
+		 * frame.setBounds(0, 0, 287, 185);
+		
 		frame.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 		
 		ImageIcon logo = new ImageIcon("library-book-logo.png");
 		frame.setIconImage(logo.getImage());
 		
+		*/
 		
-		JButton btnNewButton = new JButton("WELCOME TO THE LIBRARY MANAGER");
+		JPanel topPanel = new JPanel();
+		topPanel.setBounds(10, 10, 1044, 50);
+		frame.getContentPane().add(topPanel);
+		topPanel.setLayout(new GridLayout(1, 2, 10, 10));
+	    topPanel.setBackground(Color.DARK_GRAY); 
+		
+
+		
+		LibraryButtons btnNewButton = new LibraryButtons("WELCOME TO THE LIBRARY MANAGER");
+	
+
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {		// button that opens a new view of the library
-				LibraryView library = new LibraryView();	}	// 
+				LibraryView library = new LibraryView();
+
+				}	
 		});
-		frame.getContentPane().add(btnNewButton, BorderLayout.CENTER);
+
+	    // Add button to the top panel 
+	    topPanel.add(btnNewButton);
+	    frame.getContentPane().add(topPanel, BorderLayout.NORTH); // Use NORTH to avoid conflicts
+
+	    frame.setVisible(true); // Ensure frame is visible
 		
+		
+		//frame.getContentPane().add(btnNewButton, BorderLayout.CENTER);
+	
 		//Database db=new Database(); //creo la base de datos de prueba
 		
 		//db.createDatabase(false); //le paso el valor falso porque considero que no esta creada aun
 		//db.loadDatabase(); //cargo datos de prueba
 		
 	}
+
+
 		
-	public JFrame getFrame() { return this.frame; }
+	//public JFrame getFrame() { return this.frame; }
+	
+	
 	
 }

@@ -70,15 +70,15 @@ public class LibraryView {
 		frmLibrary.getContentPane().add(topPanel);
 		topPanel.setLayout(new GridLayout(0, 2, 10, 10));
 		
-		JButton borrowBookButton = new JButton("Borrow Book");
+		LibraryButtons borrowBookButton = new LibraryButtons("Borrow Book");
 		borrowBookButton.setForeground(new Color(0, 0, 0));
 		borrowBookButton.setFocusable(false);
-		borrowBookButton.setBackground(Color.GREEN);
+		borrowBookButton.setBackground(new Color(138, 255, 128));
 		topPanel.add(borrowBookButton);
 		
-		JButton returnBookButton = new JButton("Return Book");
+		LibraryButtons returnBookButton = new LibraryButtons("Return Book");
 		returnBookButton.setFocusable(false);
-		returnBookButton.setBackground(Color.RED); // Change button background to red
+		returnBookButton.setBackground(new Color(53, 56, 56)); // Change button background to red
 		returnBookButton.setForeground(new Color(255, 255, 255));
 		topPanel.add(returnBookButton);
 		frmLibrary.setVisible(true);
@@ -92,8 +92,7 @@ public class LibraryView {
 		frmLibrary.getContentPane().add(secondPanel);
 		secondPanel.setLayout(new GridLayout(0, 4, 10,10));
 		
-		//LibraryButtons showLibraryButton = LibraryButtons("Show Library");
-		//secondPanel.add(showLibraryButton);
+
 		LibraryButtons showLibraryButton = new LibraryButtons("Show Library");
 		secondPanel.add(showLibraryButton);
 		
@@ -119,13 +118,31 @@ public class LibraryView {
 		thirdPanel.add(scrollPane);
 		
 		table_1 = new JTable();
+				
 		table_1.setModel(new DefaultTableModel(
+
+				
 			new Object[][] {
 			},
 			new String[] {
 				"Book Name", "Writer", "Year", "Category", "Borrowed"
 			}
+			
 		));
+		
+		/*
+		 * 
+		 * commented because doesn't work
+		 * 
+		 * 
+		
+		table_1.setForeground(new Color(0,0,0));
+		table_1.setBackground(new Color(0,0,0));
+		table_1.setGridColor(new Color(0,0,0));
+		table_1.
+		
+		
+		*/
 		scrollPane.setViewportView(table_1);
 		
 		

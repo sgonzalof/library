@@ -15,6 +15,8 @@ import javax.swing.JFrame;
 import java.awt.Button;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
 import javax.swing.JPanel;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -37,14 +39,26 @@ public class LibraryFrame extends JFrame {
 		
 		this.setBounds(40, 40, 1080, 660);
 		this.getContentPane().setLayout(null);
-		//this.getContentPane().setBackground(Color.DARK_GRAY);
 		
-		JMenuBar menuBar = new JMenuBar();
+
+        
+        // Create menu bar
+        JMenuBar menuBar = new JMenuBar();
+        menuBar.setOpaque(true);
+        menuBar.setBackground(Color.BLACK);
+        
+
+        
+
+        // Create menus
 		JMenu fileMenu = new JMenu("File");
 		JMenu editMenu = new JMenu("Edit");
 		JMenu optionsMenu = new JMenu("Options");
 		JMenu helpMenu = new JMenu("Help");
 		
+		
+
+        // Create menu items
 		JMenuItem newItem = new JMenuItem("New");
 		JMenuItem openItem = new JMenuItem("Open");
 		JMenuItem saveItem = new JMenuItem("Save");
@@ -52,6 +66,8 @@ public class LibraryFrame extends JFrame {
 		JMenuItem exportItem = new JMenuItem("Export");
 		JMenuItem exitItem = new JMenuItem("Exit");
 		
+
+        // Add items to the "File" menu
 		fileMenu.add(newItem);
 		fileMenu.add(openItem);
 		fileMenu.add(saveItem);
@@ -59,16 +75,23 @@ public class LibraryFrame extends JFrame {
 		fileMenu.add(exportItem);
 		fileMenu.add(exitItem);
 		
+        // Add menus to menu bar
 		menuBar.add(fileMenu);
 		menuBar.add(editMenu);
 		menuBar.add(optionsMenu);
 		menuBar.add(helpMenu);
-		
+
+
+        // Set the menu bar for the frame
 		this.setJMenuBar(menuBar);
-		
-		
+
+        // Set frame icon
 		ImageIcon logo = new ImageIcon("library-book-logo.png");
 		this.setIconImage(logo.getImage());
 	}
-
 }
+   
+
+
+
+

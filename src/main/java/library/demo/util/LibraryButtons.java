@@ -7,13 +7,12 @@ import javax.swing.JButton;
 public class LibraryButtons extends JButton {
 	public LibraryButtons(String string){
 		
-		this.setFocusable(false);
-		
-        this.setForeground(Color.WHITE);
-        this.setBackground(new Color(50, 50, 50));
+        this.setForeground(Color.BLACK);
+        this.setBackground(new Color(87, 127, 143));
         this.setFocusPainted(false);
         this.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
         this.setText(string);
+        this.setVisible(true);
         
 	}
 
