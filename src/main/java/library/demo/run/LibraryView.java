@@ -21,6 +21,11 @@ import javax.swing.JLabel;
 import java.awt.Color;
 import javax.swing.table.DefaultTableModel;
 
+import library.demo.util.LibraryFrame;
+import library.demo.util.LibraryButtons;
+
+import javax.swing.ImageIcon;
+
 public class LibraryView {
 	
 	protected JFrame frmLibrary;
@@ -34,10 +39,28 @@ public class LibraryView {
 	}
 	
 	private void initialize() {
+		
+		/* this is commented because i added the class LibraryFrame, so 
+		 * its called with all settings of the frames of the library
+		 * 
+		 * TO-DO -- add to the logging frame (SwingMain.java)
+		 * TO-DO -- add class for buttons 
+		 * 
+		 * 
 		frmLibrary = new JFrame();
+		frmLibrary.setDefaultCloseOperation(frmLibrary.EXIT_ON_CLOSE);
 		frmLibrary.setTitle("LIBRARY MANAGER");
 		frmLibrary.setBounds(40, 40, 1080, 660);
 		frmLibrary.getContentPane().setLayout(null);
+		frmLibrary.getContentPane().setBackground(Color.DARK_GRAY);
+		
+		
+		ImageIcon logo = new ImageIcon("library-book-logo.png");
+		frmLibrary.setIconImage(logo.getImage());
+		*/
+		
+		LibraryFrame frmLibrary = new LibraryFrame();
+		frmLibrary.setTitle("LIBRARY MANAGER");
 		
 		// first panel, borrow book and return book buttons
 		
@@ -49,11 +72,13 @@ public class LibraryView {
 		
 		JButton borrowBookButton = new JButton("Borrow Book");
 		borrowBookButton.setForeground(new Color(0, 0, 0));
+		borrowBookButton.setFocusable(false);
 		borrowBookButton.setBackground(Color.GREEN);
 		topPanel.add(borrowBookButton);
 		
 		JButton returnBookButton = new JButton("Return Book");
-		returnBookButton.setBackground(Color.RED); // Cambia el fondo del botón a rojo
+		returnBookButton.setFocusable(false);
+		returnBookButton.setBackground(Color.RED); // Change button background to red
 		returnBookButton.setForeground(new Color(255, 255, 255));
 		topPanel.add(returnBookButton);
 		frmLibrary.setVisible(true);
@@ -67,16 +92,18 @@ public class LibraryView {
 		frmLibrary.getContentPane().add(secondPanel);
 		secondPanel.setLayout(new GridLayout(0, 4, 10,10));
 		
-		JButton showLibraryButton = new JButton("Show Library");
+		//LibraryButtons showLibraryButton = LibraryButtons("Show Library");
+		//secondPanel.add(showLibraryButton);
+		LibraryButtons showLibraryButton = new LibraryButtons("Show Library");
 		secondPanel.add(showLibraryButton);
 		
-		JButton addBookButton = new JButton("Add Book");
+		LibraryButtons addBookButton = new LibraryButtons("Add Book");
 		secondPanel.add(addBookButton);
 		
-		JButton removeBookButton = new JButton("Remove Book");
+		LibraryButtons removeBookButton = new LibraryButtons("Remove Book");
 		secondPanel.add(removeBookButton);
 		
-		JButton modifyBookButton = new JButton("Modify Book");
+		LibraryButtons modifyBookButton = new LibraryButtons("Modify Book");
 		secondPanel.add(modifyBookButton);
 		
 		
@@ -110,19 +137,19 @@ public class LibraryView {
 		frmLibrary.getContentPane().add(fourthPanel);
 		fourthPanel.setLayout(new GridLayout(0, 5, 10, 10));
 		
-		JButton showMembersButton = new JButton("Show Members");
+		LibraryButtons showMembersButton = new LibraryButtons("Show Members");
 		fourthPanel.add(showMembersButton);
 		
-		JButton addMemberButton = new JButton("Add Member");
+		LibraryButtons addMemberButton = new LibraryButtons("Add Member");
 		fourthPanel.add(addMemberButton);
 		
-		JButton removeMemberButton = new JButton("Remove Member");
+		LibraryButtons removeMemberButton = new LibraryButtons("Remove Member");
 		fourthPanel.add(removeMemberButton);
 		
-		JButton modifyMemberButton = new JButton("Modify Member");
+		LibraryButtons modifyMemberButton = new LibraryButtons("Modify Member");
 		fourthPanel.add(modifyMemberButton);
 		
-		JButton showDelaysButton = new JButton("Show Delays");
+		LibraryButtons showDelaysButton = new LibraryButtons("Show Delays");
 		fourthPanel.add(showDelaysButton);
 		
 		
@@ -150,5 +177,10 @@ public class LibraryView {
 
 			
 
+	}
+
+	private JButton JButton(String string) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
