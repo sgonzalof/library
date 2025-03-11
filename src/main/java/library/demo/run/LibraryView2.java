@@ -26,6 +26,8 @@ import library.demo.util.LibraryFrame;
 import library.demo.util.LibraryButtons;
 
 import javax.swing.ImageIcon;
+import java.awt.Font;
+import javax.swing.SwingConstants;
 
 public class LibraryView2 {
 	
@@ -50,29 +52,86 @@ public class LibraryView2 {
 	    
 	    JPanel background = new JPanel();
 	    background.setForeground(new Color(255, 255, 255));
-	    background.setBackground(new Color(0, 11, 88));
+	    background.setBackground(new Color(39, 50, 58));
 	    background.setLayout(null);
 
 	    frmLibrary.getContentPane().add(background);
 	    
-	    JPanel upperPanel = new JPanel();
-	    upperPanel.setForeground(new Color(255, 255, 255));
-	    upperPanel.setBackground(new Color(0, 49, 97));
-	    upperPanel.setBounds(0, 0, 868, 255);
-	    background.add(upperPanel);
+	    JPanel leftPanel = new JPanel();
+	    leftPanel.setBackground(new Color(67, 80, 85));
+	    leftPanel.setBounds(0, 0, 217, 436);
+	    background.add(leftPanel);
+	    leftPanel.setLayout(null);
 	    
-	    JPanel closeBar = new JPanel();
-	    closeBar.setBounds(0, 0, 868, 29);
-	    background.add(closeBar);
-	    closeBar.setLayout(null);
+	    JLabel closeWindowLabel = new JLabel("");
+	    closeWindowLabel.setForeground(new Color(255, 255, 255));
+	    closeWindowLabel.setFont(new Font("Roboto", Font.PLAIN, 14));
+	    closeWindowLabel.setBounds(0, 0, 868, 27);
+	    leftPanel.add(closeWindowLabel);
 	    
-	    JLabel closeBtn = new JLabel("X");
-	    closeBtn.setToolTipText("");
-	    closeBtn.setDisplayedMnemonic('x');
-	    closeBtn.setBackground(new Color(0, 49, 97));
-	    closeBtn.setForeground(new Color(255, 255, 255));
-	    closeBtn.setBounds(0, 0, 31, 29);
-	    closeBar.add(closeBtn);
+
+	    
+	    JLabel lblNewLabel = new JLabel("  X");
+	    lblNewLabel.setForeground(new Color(255, 255, 255));
+	    lblNewLabel.setFont(new Font("Roboto", Font.PLAIN, 15));
+	    lblNewLabel.setBounds(0, 0, 30, 27);
+	    leftPanel.add(lblNewLabel);
+	    
+	    
+	    JPanel borrowBookBtn = new JPanel();
+	    borrowBookBtn.setBackground(new Color(143, 247, 191));
+	    borrowBookBtn.setToolTipText("Borrow Book");
+	    borrowBookBtn.setBounds(20, 130, 154, 27);
+	    leftPanel.add(borrowBookBtn);
+	    borrowBookBtn.setLayout(null);
+	    
+	    JLabel borrowBookLabel = new JLabel("Borrow Book");
+	    borrowBookLabel.setFont(new Font("Roboto", Font.PLAIN, 11));
+	    borrowBookLabel.setBounds(0, 0, 154, 27);
+	    borrowBookBtn.add(borrowBookLabel);	    
+	    borrowBookLabel.setHorizontalAlignment(0);
+	    
+	    JPanel returnBookBtn = new JPanel();
+	    returnBookBtn.setLayout(null);
+	    returnBookBtn.setToolTipText("Borrow Book");
+	    returnBookBtn.setBackground(new Color(41, 161, 156));
+	    returnBookBtn.setBounds(20, 168, 154, 27);
+	    leftPanel.add(returnBookBtn);
+	    
+	    JLabel returnBookLabel = new JLabel("Return Book");
+	    returnBookLabel.setFont(new Font("Roboto", Font.PLAIN, 11));
+	    returnBookLabel.setHorizontalAlignment(SwingConstants.CENTER);
+	    returnBookLabel.setBounds(0, 0, 154, 27);
+	    returnBookBtn.add(returnBookLabel);
+	    
+	    JLabel titleLabel_1 = new JLabel("LIBRARY MANAGER");
+	    titleLabel_1.setFont(new Font("Roboto", Font.PLAIN, 15));
+	    titleLabel_1.setHorizontalTextPosition(SwingConstants.CENTER);
+	    titleLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
+	    titleLabel_1.setForeground(Color.WHITE);
+	    titleLabel_1.setBounds(0, 0, 838, 27);
+	    background.add(titleLabel_1);
+	    
+	    JPanel panel = new JPanel();
+	    panel.setBounds(227, 58, 103, 27);
+	    background.add(panel);
+	    
+	    JPanel panel_1 = new JPanel();
+	    panel_1.setBounds(355, 58, 103, 27);
+	    background.add(panel_1);
+	    
+	    JPanel panel_2 = new JPanel();
+	    panel_2.setBounds(482, 58, 103, 27);
+	    background.add(panel_2);
+	    
+	    JPanel panel_3 = new JPanel();
+	    panel_3.setBounds(615, 58, 103, 27);
+	    background.add(panel_3);
+	    
+	    JPanel panel_4 = new JPanel();
+	    panel_4.setBounds(744, 58, 103, 27);
+	    background.add(panel_4);
+	    
 	    frmLibrary.setSize(1080, 660);
 	    frmLibrary.setVisible(true);
 	}

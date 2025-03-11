@@ -60,6 +60,7 @@ public class LibraryView {
 		*/
 		
 		LibraryFrame frmLibrary = new LibraryFrame();
+		frmLibrary.setVisible(true);
 		frmLibrary.setTitle("LIBRARY MANAGER");
 		
 		// first panel, borrow book and return book buttons
@@ -81,7 +82,7 @@ public class LibraryView {
 		returnBookButton.setBackground(new Color(53, 56, 56)); // Change button background to red
 		returnBookButton.setForeground(new Color(255, 255, 255));
 		topPanel.add(returnBookButton);
-		frmLibrary.setVisible(true);
+		
 		
 		
 		// second panel, library buttons

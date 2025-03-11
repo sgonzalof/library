@@ -19,6 +19,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 
 import javax.swing.ImageIcon;
+import javax.swing.JTextPane;
 
 
 /**
@@ -139,8 +140,32 @@ public class SwingMain {
 		
 		*/
 		
+		JPanel loginPanel = new JPanel();
+		loginPanel.setBounds(10, 10, 1044, 50);	
+		loginPanel.setLayout(new GridLayout(2, 1, 10, 10));
+		frame.getContentPane().add(loginPanel);
+		
+	    JTextPane userField = new JTextPane();
+	    loginPanel.add(userField);
+	    userField.setBackground(new Color(67, 80, 85));
+	    
+	    JTextPane passwordField = new JTextPane();
+	    passwordField.setToolTipText("*******");
+	    loginPanel.add(passwordField);
+
+
+
+
+
+
+
+		
+		
+		
+		
+		
 		JPanel topPanel = new JPanel();
-		topPanel.setBounds(10, 10, 1044, 50);
+		topPanel.setBounds(10, 200, 1044, 50);
 		frame.getContentPane().add(topPanel);
 		topPanel.setLayout(new GridLayout(1, 2, 10, 10));
 	    topPanel.setBackground(Color.DARK_GRAY); 
@@ -148,11 +173,9 @@ public class SwingMain {
 
 		
 		LibraryButtons btnNewButton = new LibraryButtons("WELCOME TO THE LIBRARY MANAGER");
-	
-
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {		// button that opens a new view of the library
-				LibraryView library = new LibraryView();
+				LibraryView2 library = new LibraryView2();
 
 				}	
 		});
@@ -160,6 +183,8 @@ public class SwingMain {
 	    // Add button to the top panel 
 	    topPanel.add(btnNewButton);
 	    frame.getContentPane().add(topPanel, BorderLayout.NORTH); // Use NORTH to avoid conflicts
+	    
+
 
 	    frame.setVisible(true); // Ensure frame is visible
 		
