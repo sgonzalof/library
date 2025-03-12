@@ -54,6 +54,7 @@ public class LibraryView2 {
 	    leftPanel.setBackground(new Color(21, 27, 35));
 	    leftPanel.setSize(180, 660);
 	    frmLibrary.getContentPane().add(leftPanel);
+	    leftPanel.setVisible(true);
 	    
 	    
 	    
@@ -63,6 +64,7 @@ public class LibraryView2 {
 	    borrowBtnPanel.setBackground(new Color(33,40,48));
 	    borrowBtnPanel.setBounds(10, 10, 50, 10);
 	    leftPanel.add(borrowBtnPanel);
+	    borrowBtnPanel.setVisible(true);
 
 	    
 
@@ -73,6 +75,7 @@ public class LibraryView2 {
 	    rightPanel.setBackground(new Color(13, 17, 23));
 	    rightPanel.setBounds(180, 0, 900, 660);
 	    frmLibrary.getContentPane().add(rightPanel);
+	    rightPanel.setVisible(true);
 	    
 	}
 
