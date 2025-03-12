@@ -56,6 +56,7 @@ public class LibraryView2 {
 	    frmLibrary.getContentPane().add(leftPanel);
 	    
 	    
+	    
 	    // left panel buttons
 	    
 	    JPanel borrowBtnPanel = new JPanel();

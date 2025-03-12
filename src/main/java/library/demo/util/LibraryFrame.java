@@ -80,6 +80,7 @@ public class LibraryFrame extends JFrame {
 		menuBar.add(editMenu);
 		menuBar.add(optionsMenu);
 		menuBar.add(helpMenu);
+		
 
 
         // Set the menu bar for the frame
