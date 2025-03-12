@@ -6,6 +6,7 @@ import java.awt.EventQueue;
 import java.awt.GridLayout;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
 import javax.swing.UIManager.LookAndFeelInfo;
@@ -20,6 +21,9 @@ import java.awt.Color;
 
 import javax.swing.ImageIcon;
 import javax.swing.JTextPane;
+import javax.swing.JPasswordField;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 
 /**
@@ -141,17 +145,45 @@ public class SwingMain {
 		*/
 		
 		JPanel loginPanel = new JPanel();
-		loginPanel.setBounds(10, 10, 1044, 50);	
-		loginPanel.setLayout(new GridLayout(2, 1, 10, 10));
+		loginPanel.setBounds(10, 10, 1044, 200);	
+		loginPanel.setLayout(new GridLayout(4, 1, 10, 10));
 		frame.getContentPane().add(loginPanel);
 		
+		
+		
 	    JTextPane userField = new JTextPane();
+	    userField.addMouseListener(new MouseAdapter() {
+
+	    	public void mousePressed(MouseEvent e) {
+	    		userField.setText("");
+	    		//passwordField.setText("********");
+	    		
+	    
+	    	}
+	    });
+
+	    
+	    userField.setText("User");
 	    loginPanel.add(userField);
 	    userField.setBackground(new Color(67, 80, 85));
 	    
-	    JTextPane passwordField = new JTextPane();
-	    passwordField.setToolTipText("*******");
+	    JPasswordField passwordField = new JPasswordField();
+	    passwordField.addMouseListener(new MouseAdapter() {
+	    	public void mousePressed(MouseEvent e) {
+	    		passwordField.setText("");
+	    		userField.setText("User");
+	    	}
+	    });
+
+	    passwordField.setText("*********");
+	    passwordField.setToolTipText("");
 	    loginPanel.add(passwordField);
+	    passwordField.setBackground(new Color(67, 80, 85));
+	    
+
+
+
+
 
 
 
@@ -175,7 +207,7 @@ public class SwingMain {
 		LibraryButtons btnNewButton = new LibraryButtons("WELCOME TO THE LIBRARY MANAGER");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {		// button that opens a new view of the library
-				LibraryView2 library = new LibraryView2();
+				LibraryView library = new LibraryView();
 
 				}	
 		});
