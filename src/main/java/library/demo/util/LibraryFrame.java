@@ -37,9 +37,11 @@ public class LibraryFrame extends JFrame {
 
 		this.setDefaultCloseOperation(this.EXIT_ON_CLOSE);
 		
-		this.setBounds(40, 40, 1080, 660);
+		//this.setBounds(0, 0, 1920, 1080);
 		this.getContentPane().setLayout(null);
-		
+		this.setExtendedState(JFrame.MAXIMIZED_BOTH); 
+		this.setUndecorated(false);
+		this.setResizable(false);
 
         
         // Create menu bar
@@ -80,6 +82,7 @@ public class LibraryFrame extends JFrame {
 		menuBar.add(editMenu);
 		menuBar.add(optionsMenu);
 		menuBar.add(helpMenu);
+		
 
 
         // Set the menu bar for the frame

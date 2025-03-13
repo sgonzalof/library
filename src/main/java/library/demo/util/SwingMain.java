@@ -207,7 +207,10 @@ public class SwingMain {
 		LibraryButtons btnNewButton = new LibraryButtons("WELCOME TO THE LIBRARY MANAGER");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {		// button that opens a new view of the library
-				LibraryView library = new LibraryView();
+
+				
+
+				LibraryView3 library = new LibraryView3();
 
 				}	
 		});
