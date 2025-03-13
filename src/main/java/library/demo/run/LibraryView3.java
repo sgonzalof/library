@@ -73,23 +73,25 @@ public class LibraryView3 {
 		LibraryFrame frmLibrary = new LibraryFrame();
 		frmLibrary.setVisible(true);
 		frmLibrary.setTitle("LIBRARY MANAGER");
+		
+		
 	
 
-		
 		/*
+		
 		JFrame frmLibrary = new JFrame();  //change this lines with the commented section above
 		frmLibrary.setResizable(false);
 		frmLibrary.setBounds(0, 0, 1920, 1080);
 		frmLibrary.getContentPane().setLayout(null);
 		
-		*/
 		
+		*/
 	
 		// LEFT PANEL
 		
 		JPanel leftPanel = new JPanel();
 		leftPanel.setBackground(Dark);
-		leftPanel.setBounds(0, 0, 180, 848);
+		leftPanel.setBounds(0, 0, 180, 1080);
 		frmLibrary.getContentPane().add(leftPanel);
 		leftPanel.setLayout(null);
 		
@@ -198,7 +200,7 @@ public class LibraryView3 {
 		
 		JPanel mainPanel = new JPanel();
 		mainPanel.setBackground(new Color(13, 17, 23));
-		mainPanel.setBounds(179, 0, 1365, 848);
+		mainPanel.setBounds(180, 0, 1740, 1080);
 		frmLibrary.getContentPane().add(mainPanel);
 		mainPanel.setLayout(null);
 		
@@ -210,6 +212,19 @@ public class LibraryView3 {
 		addBookPanel.setBackground(new Color(33, 40, 48));
 		addBookPanel.setBounds(50, 30, 150, 33);
 		mainPanel.add(addBookPanel);
+		
+		addBookPanel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				addBookPanel.setBackground(HoverBtnColor);
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				addBookPanel.setBackground(Light);
+			}
+		});
+		
+
 		
 		JLabel addBookLabel = new JLabel("Add Book");
 		addBookLabel.setFont(new Font("Roboto Light", Font.PLAIN, 15));
@@ -223,6 +238,17 @@ public class LibraryView3 {
 		deleteBookPanel.setBounds(210, 30, 150, 33);
 		mainPanel.add(deleteBookPanel);
 		
+		deleteBookPanel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				deleteBookPanel.setBackground(HoverBtnColor);
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				deleteBookPanel.setBackground(Light);
+			}
+		});
+		
 		JLabel deleteBookLabel = new JLabel("Delete Book");
 		deleteBookLabel.setForeground(new Color(145, 152, 161));
 		deleteBookLabel.setFont(new Font("Roboto Light", Font.PLAIN, 15));
@@ -235,6 +261,17 @@ public class LibraryView3 {
 		modifyBookPanel.setBounds(370, 30, 150, 33);
 		mainPanel.add(modifyBookPanel);
 		
+		modifyBookPanel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				modifyBookPanel.setBackground(HoverBtnColor);
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				modifyBookPanel.setBackground(Light);
+			}
+		});
+		
 		JLabel modifyBookLabel = new JLabel("Modify Book");
 		modifyBookLabel.setForeground(new Color(145, 152, 161));
 		modifyBookLabel.setFont(new Font("Roboto Light", Font.PLAIN, 15));
@@ -246,6 +283,17 @@ public class LibraryView3 {
 		showLibPanel.setBackground(new Color(33, 40, 48));
 		showLibPanel.setBounds(530, 30, 150, 33);
 		mainPanel.add(showLibPanel);
+		
+		showLibPanel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				showLibPanel.setBackground(HoverBtnColor);
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				showLibPanel.setBackground(Light);
+			}
+		});
 		
 		JLabel showLibLabel = new JLabel("Show Library");
 		showLibLabel.setForeground(new Color(145, 152, 161));
@@ -263,6 +311,17 @@ public class LibraryView3 {
 		addMemberPanel.setBounds(50, 417, 150, 33);
 		mainPanel.add(addMemberPanel);
 		
+		addMemberPanel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				addMemberPanel.setBackground(HoverBtnColor);
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				addMemberPanel.setBackground(Light);
+			}
+		});
+		
 		JLabel AddMemberLabel = new JLabel("Add Member");
 		AddMemberLabel.setForeground(new Color(145, 152, 161));
 		AddMemberLabel.setFont(new Font("Roboto Light", Font.PLAIN, 15));
@@ -274,6 +333,17 @@ public class LibraryView3 {
 		deleteMemberPanel.setBackground(new Color(33, 40, 48));
 		deleteMemberPanel.setBounds(210, 417, 150, 33);
 		mainPanel.add(deleteMemberPanel);
+		
+		deleteMemberPanel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				deleteMemberPanel.setBackground(HoverBtnColor);
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				deleteMemberPanel.setBackground(Light);
+			}
+		});
 		
 		JLabel deleteMemberLabel = new JLabel("Delete Member");
 		deleteMemberLabel.setForeground(new Color(145, 152, 161));
@@ -287,6 +357,17 @@ public class LibraryView3 {
 		modifyMemberPanel.setBounds(370, 417, 150, 33);
 		mainPanel.add(modifyMemberPanel);
 		
+		modifyMemberPanel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				modifyMemberPanel.setBackground(HoverBtnColor);
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				modifyMemberPanel.setBackground(Light);
+			}
+		});
+		
 		JLabel modifyMemberLabel = new JLabel("Modify Member");
 		modifyMemberLabel.setForeground(new Color(145, 152, 161));
 		modifyMemberLabel.setFont(new Font("Roboto Light", Font.PLAIN, 15));
@@ -299,6 +380,17 @@ public class LibraryView3 {
 		showMembersPanel.setBounds(530, 417, 150, 33);
 		mainPanel.add(showMembersPanel);
 		
+		showMembersPanel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				showMembersPanel.setBackground(HoverBtnColor);
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				showMembersPanel.setBackground(Light);
+			}
+		});
+		
 		JLabel showMembersLabel = new JLabel("Show Members");
 		showMembersLabel.setForeground(new Color(145, 152, 161));
 		showMembersLabel.setFont(new Font("Roboto Light", Font.PLAIN, 15));
@@ -308,7 +400,7 @@ public class LibraryView3 {
 		// TABLES
 		
 		JScrollPane libscrollPane = new JScrollPane();
-		libscrollPane.setBounds(50, 76, 1273, 321);
+		libscrollPane.setBounds(50, 76, 1650, 321);
 		mainPanel.add(libscrollPane);
 		
 		table_3 = new JTable();
@@ -324,7 +416,7 @@ public class LibraryView3 {
 		
 		
 		JScrollPane membscrollPane = new JScrollPane();
-		membscrollPane.setBounds(50, 465, 1273, 321);
+		membscrollPane.setBounds(50, 461, 1650, 321);
 		mainPanel.add(membscrollPane);
 		
 		table_2 = new JTable();
