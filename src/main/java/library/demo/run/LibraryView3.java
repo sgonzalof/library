@@ -13,6 +13,8 @@ import java.awt.BorderLayout;
 import javax.swing.JInternalFrame;
 import javax.swing.JEditorPane;
 import java.awt.Button;
+import java.awt.CardLayout;
+
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JPanel;
@@ -20,6 +22,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import java.awt.Color;
+import java.awt.Component;
+
 import javax.swing.table.DefaultTableModel;
 
 import library.demo.util.LibraryFrame;
@@ -33,15 +37,20 @@ import java.awt.FlowLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class LibraryView3 {
+public class LibraryView3 extends LibraryFrame {
 	
 	protected LibraryFrame frmLibrary;
 	private JTable table;
 	private JTable table_1;
 	private JTable table_2;
 	private JTable table_3;
+    private CardLayout cardLayout;
+    private JPanel mainPanel;
+    private BorrowBookPanel borrowBookPanel;
 
-	
+
+    
+
 
 	/**
 	 * @wbp.parser.entryPoint
@@ -51,7 +60,7 @@ public class LibraryView3 {
 	
 	public LibraryView3() {
 		
-		
+
 		
 		Color Darkest =new Color(13, 17, 23);
 		Color Dark =new Color(21, 27, 35);
@@ -60,36 +69,69 @@ public class LibraryView3 {
 		Color MoreLightest =new Color(145, 152, 161) ;
 		Color HoverBtnColor =new Color(74, 68, 81);
 		
+
+
 		
+
+
 		
+
 		
 		
 		// Comment the 3 below lines to see the frame in the window builder,
 		// then uncomment the next JFrame lines
 		//
+        
 	
-		
+
+
 		
 		LibraryFrame frmLibrary = new LibraryFrame();
 		frmLibrary.setVisible(true);
 		frmLibrary.setTitle("LIBRARY MANAGER");
+        getContentPane().setLayout(new BorderLayout());
 		
-		
+
+
+        
+        
+		/*
 	
 
-		/*
+		
 		
 		JFrame frmLibrary = new JFrame();  //change this lines with the commented section above
 		frmLibrary.setResizable(false);
 		frmLibrary.setBounds(0, 0, 1920, 1080);
 		frmLibrary.getContentPane().setLayout(null);
 		
-		
 		*/
+        
+        
+        //cardLayout = new CardLayout();
+        mainPanel = new JPanel(cardLayout);
+		JPanel leftPanel = new JPanel();
+		
+        getContentPane().add(mainPanel, BorderLayout.CENTER);
+        getContentPane().add(leftPanel);
+        
+		BorrowBookPanel borrowPanel = new BorrowBookPanel();
+		ReturnBookPanel returnPanel = new ReturnBookPanel();
+		ShowDelaysPanel delaysPanel = new ShowDelaysPanel();
+		
+		frmLibrary.add(borrowPanel);
+		frmLibrary.add(returnPanel);
+		frmLibrary.add(delaysPanel);
+	
+		borrowPanel.setVisible(false);
+        returnPanel.setVisible(false);
+        delaysPanel.setVisible(false);
+        mainPanel.setVisible(true);
+		
 	
 		// LEFT PANEL
 		
-		JPanel leftPanel = new JPanel();
+
 		leftPanel.setBackground(Dark);
 		leftPanel.setBounds(0, 0, 180, 1080);
 		frmLibrary.getContentPane().add(leftPanel);
@@ -108,6 +150,7 @@ public class LibraryView3 {
 		
 		// borrow button
 		
+
 		JPanel borrowBtnPanel = new JPanel();
 		
 		borrowBtnPanel.setBackground(Light);
@@ -120,6 +163,13 @@ public class LibraryView3 {
 		borrowBtnLabel.setFont(new Font("Roboto SemiBold", Font.PLAIN, 17));
 		borrowBtnLabel.setForeground(Lightest);
 		borrowBtnPanel.add(borrowBtnLabel);
+
+
+
+
+		
+	
+
 		
 		borrowBtnPanel.addMouseListener(new MouseAdapter() {
 			@Override
@@ -130,13 +180,30 @@ public class LibraryView3 {
 			public void mouseExited(MouseEvent e) {
 				borrowBtnPanel.setBackground(Light);
 			}
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				BorrowBookFrame library = new BorrowBookFrame();
-			}
-		});
-
+			
+			
+		
 	
+
+			@Override
+			
+			public void mousePressed(MouseEvent e) {
+
+				mainPanel.setVisible(false);
+				borrowPanel.setVisible(true);
+				returnPanel.setVisible(false);
+				delaysPanel.setVisible(false);
+				
+			}
+			
+		
+		});
+		
+
+
+
+
+        
 		// return button
 		JPanel returnBtnPanel = new JPanel();
 		FlowLayout flowLayout = (FlowLayout) returnBtnPanel.getLayout();
@@ -159,6 +226,17 @@ public class LibraryView3 {
 			@Override
 			public void mouseExited(MouseEvent e) {
 				returnBtnPanel.setBackground(Light);
+			}
+			@Override
+			
+			public void mousePressed(MouseEvent e) {
+
+				mainPanel.setVisible(false);
+				returnPanel.setVisible(true);
+				borrowPanel.setVisible(false);
+
+				delaysPanel.setVisible(false);
+				
 			}
 		});
 
@@ -191,6 +269,17 @@ public class LibraryView3 {
 			public void mouseExited(MouseEvent e) {
 				showDelaysBtnPanel.setBackground(Light);
 			}
+			public void mousePressed(MouseEvent e) {
+
+				mainPanel.setVisible(false);
+				delaysPanel.setVisible(true);
+				returnPanel.setVisible(false);
+				borrowPanel.setVisible(false);
+
+				
+				
+				
+			}
 		});
 		
 	
@@ -198,7 +287,7 @@ public class LibraryView3 {
 		
 		// MAIN PANEL
 		
-		JPanel mainPanel = new JPanel();
+
 		mainPanel.setBackground(new Color(13, 17, 23));
 		mainPanel.setBounds(180, 0, 1740, 1080);
 		frmLibrary.getContentPane().add(mainPanel);
@@ -434,4 +523,11 @@ public class LibraryView3 {
 	
 	
 	}
+
+
+
+		
+	
+
+	
 }

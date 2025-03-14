@@ -77,6 +77,7 @@ public class LibraryView {
 		borrowBookButton.setBackground(new Color(138, 255, 128));
 		topPanel.add(borrowBookButton);
 		
+		
 		LibraryButtons returnBookButton = new LibraryButtons("Return Book");
 		returnBookButton.setFocusable(false);
 		returnBookButton.setBackground(new Color(53, 56, 56)); // Change button background to red
@@ -156,6 +157,14 @@ public class LibraryView {
 		fourthPanel.setLayout(new GridLayout(0, 5, 10, 10));
 		
 		LibraryButtons showMembersButton = new LibraryButtons("Show Members");
+		showMembersButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				BorrowBookPanel bookPanel = new BorrowBookPanel();
+				frmLibrary.add(bookPanel);
+				fourthPanel.setVisible(false);
+				bookPanel.setVisible(true);
+			}
+		});
 		fourthPanel.add(showMembersButton);
 		
 		LibraryButtons addMemberButton = new LibraryButtons("Add Member");
