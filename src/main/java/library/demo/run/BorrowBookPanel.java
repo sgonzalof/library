@@ -2,9 +2,18 @@ package library.demo.run;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class BorrowBookPanel extends JPanel {
+	
+	private LibraryView3 mainPanel;
+	private ReturnBookPanel returnPanel;
+	private BorrowBookPanel borrowPanel;
+
     public BorrowBookPanel() {
+    	
+
 
 		
 		Color Darkest =new Color(13, 17, 23);
@@ -78,6 +87,29 @@ public class BorrowBookPanel extends JPanel {
         borrowBtnPanel.add(borrowBtnLabel);
         
         JPanel backPanel = new JPanel();
+		backPanel.addMouseListener(new MouseAdapter() {
+			
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				backPanel.setBackground(HoverBtnColor);
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				backPanel.setBackground(Light);
+			}
+			public void mousePressed(MouseEvent e) {
+				//returnPanel.setVisible(false);
+				borrowPanel.setVisible(false);
+
+				mainPanel.setVisible(true);
+				//delaysPanel.setVisible(false);
+
+
+				
+				
+				
+			}
+		});
         backPanel.setBackground(new Color(21, 27, 35));
         backPanel.setBounds(913, 885, 400, 60);
         add(backPanel);
