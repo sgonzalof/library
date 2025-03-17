@@ -2,39 +2,41 @@
 --(en este caso en cada aplicacion se usa solo una tabla, por lo que no hace falta)
 
 --Para giis.demo.tkrun:
-drop table pedido;
-drop table articulo;
-drop table contenedor;
-drop table articuloPedido;
+drop table book;
+drop table borrow;
+drop table members;
 
 
-CREATE TABLE "contenedor" (
-	"idContenedor"	INTEGER NOT NULL,
-	"capacidad"	INTEGER NOT NULL,
-	"categoria"	TEXT NOT NULL,
-	PRIMARY KEY("idContenedor")
+
+CREATE TABLE IF NOT EXISTS "book" (
+	"isbn"	INTEGER NOT NULL,
+	"title"	TEXT NOT NULL,
+	"writer"	TEXT NOT NULL,
+	"year"	INTEGER NOT NULL,
+	"category"	INTEGER NOT NULL,
+	"borrowed"	INTEGER NOT NULL,
+	PRIMARY KEY("isbn")
 );
 
-CREATE TABLE "articuloPedido" (
-	"articulo"	INTEGER NOT NULL,
-	"pedido"	INTEGER NOT NULL,
-	PRIMARY KEY("articulo","pedido"),
-	FOREIGN KEY("articulo") REFERENCES "producto"("idProducto")
+CREATE TABLE IF NOT EXISTS "borrow" (
+	"title"	TEXT NOT NULL,
+	"name"	TEXT NOT NULL,
+	"idMember"	TEXT NOT NULL,
+	"isbn"	INTEGER NOT NULL,
+	"borrowDate"	TEXT NOT NULL,
+	"returnDate"	TEXT NOT NULL,
+	PRIMARY KEY("idMember","isbn"),
+	FOREIGN KEY("idMember") REFERENCES "members"("idMember"),
+	FOREIGN KEY("isbn") REFERENCES "book"("isbn")
 );
 
-CREATE TABLE "pedido" (
-	"idPedido"	INTEGER NOT NULL,
-	"numArticulos"	INTEGER NOT NULL,
-	PRIMARY KEY("idPedido" AUTOINCREMENT)
+CREATE TABLE IF NOT EXISTS "members" (
+	"idMember"	TEXT NOT NULL,
+	"name"	TEXT NOT NULL,
+	"staff"	INTEGER NOT NULL,
+	"birthDate"	TEXT NOT NULL,
+	"category"	INTEGER NOT NULL,
+	"tlf"	INTEGER NOT NULL,
+	"hasABook"	INTEGER,
+	PRIMARY KEY("idMember")
 );
-
-CREATE TABLE "articulo" (
-	"idArticulo"	INTEGER NOT NULL,
-	"volumen"	REAL NOT NULL,
-	"nombre"	TEXT NOT NULL,
-	"categoria"	TEXT NOT NULL,
-	PRIMARY KEY("idArticulo")
-);
-
-
-
