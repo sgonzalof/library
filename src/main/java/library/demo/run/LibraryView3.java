@@ -115,15 +115,15 @@ public class LibraryView3 extends LibraryFrame {
         getContentPane().add(mainPanel, BorderLayout.CENTER);
         getContentPane().add(leftPanel);
         
-		BorrowBookPanel borrowPanel = new BorrowBookPanel();
+
 		ReturnBookPanel returnPanel = new ReturnBookPanel();
 		ShowDelaysPanel delaysPanel = new ShowDelaysPanel();
 		
-		frmLibrary.add(borrowPanel);
+		//frmLibrary.add(borrowPanel);
 		frmLibrary.add(returnPanel);
 		frmLibrary.add(delaysPanel);
 	
-		borrowPanel.setVisible(false);
+		//borrowPanel.setVisible(false);
         returnPanel.setVisible(false);
         delaysPanel.setVisible(false);
         mainPanel.setVisible(true);
@@ -188,6 +188,8 @@ public class LibraryView3 extends LibraryFrame {
 			@Override
 			
 			public void mousePressed(MouseEvent e) {
+				BorrowBookPanel borrowPanel = new BorrowBookPanel(mainPanel);
+				
 
 				mainPanel.setVisible(false);
 				borrowPanel.setVisible(true);
@@ -233,7 +235,7 @@ public class LibraryView3 extends LibraryFrame {
 
 				mainPanel.setVisible(false);
 				returnPanel.setVisible(true);
-				borrowPanel.setVisible(false);
+				//borrowPanel.setVisible(false);
 
 				delaysPanel.setVisible(false);
 				
@@ -274,7 +276,7 @@ public class LibraryView3 extends LibraryFrame {
 				mainPanel.setVisible(false);
 				delaysPanel.setVisible(true);
 				returnPanel.setVisible(false);
-				borrowPanel.setVisible(false);
+				//borrowPanel.setVisible(false);
 
 				
 				

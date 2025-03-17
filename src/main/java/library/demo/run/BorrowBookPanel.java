@@ -11,7 +11,7 @@ public class BorrowBookPanel extends JPanel {
 	private ReturnBookPanel returnPanel;
 	private BorrowBookPanel borrowPanel;
 
-    public BorrowBookPanel() {
+    public BorrowBookPanel(JPanel mainPanel2) {
     	
     	
     	
@@ -25,14 +25,25 @@ public class BorrowBookPanel extends JPanel {
 		Color MoreLightest =new Color(145, 152, 161) ;
 		Color HoverBtnColor =new Color(74, 68, 81);
 		
+		
+		//LibraryView3 mainPanel = new LibraryView3();
+		//mainPanel.setVisible(false);
+
+		
         setBackground(Darkest);
 		setBounds(180, 0, 1740, 1080);
         setLayout(null);
         
+        JPanel borrowMainPanel = new JPanel();
+        borrowMainPanel.setBounds(180, 0, 1740, 1080);
+        borrowMainPanel.setBackground(Darkest);
+        add(borrowMainPanel);
+        borrowMainPanel.setLayout(null);
+        
         JPanel titlePanel = new JPanel();
+        titlePanel.setBackground(new Color(33, 40, 48));
         titlePanel.setBounds(50, 30, 1298, 33);
-        titlePanel.setBackground(Light);
-        add(titlePanel);
+        borrowMainPanel.add(titlePanel);
         titlePanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 8));
         
         JLabel titleLabel = new JLabel("BORROW BOOK VIEW");
@@ -42,28 +53,28 @@ public class BorrowBookPanel extends JPanel {
         titlePanel.add(titleLabel);
         
         JPanel bookPanel = new JPanel();
-        bookPanel.setBounds(50, 94, 630, 33);
-        bookPanel.setBackground(Light);
-        add(bookPanel);
         bookPanel.setLayout(null);
+        bookPanel.setBackground(new Color(33, 40, 48));
+        bookPanel.setBounds(50, 94, 630, 33);
+        borrowMainPanel.add(bookPanel);
         
         JLabel lblNewLabel = new JLabel("Book:");
+        lblNewLabel.setForeground(new Color(145, 152, 161));
         lblNewLabel.setFont(new Font("Roboto", Font.PLAIN, 14));
         lblNewLabel.setBounds(10, 0, 84, 33);
         bookPanel.add(lblNewLabel);
-        lblNewLabel.setForeground(MoreLightest);
         
         JComboBox bookNameComboBox = new JComboBox();
         bookNameComboBox.setEditable(true);
+        bookNameComboBox.setBackground(new Color(33, 40, 48));
         bookNameComboBox.setBounds(81, 0, 549, 33);
-        bookNameComboBox.setBackground(Light);
         bookPanel.add(bookNameComboBox);
         
         JPanel memberPanel = new JPanel();
         memberPanel.setLayout(null);
         memberPanel.setBackground(new Color(33, 40, 48));
         memberPanel.setBounds(718, 94, 630, 33);
-        add(memberPanel);
+        borrowMainPanel.add(memberPanel);
         
         JLabel memberLabel = new JLabel("Member:");
         memberLabel.setForeground(new Color(145, 152, 161));
@@ -78,17 +89,22 @@ public class BorrowBookPanel extends JPanel {
         memberPanel.add(memberComboBox);
         
         JPanel borrowBtnPanel = new JPanel();
-        borrowBtnPanel.setBounds(453, 885, 400, 60);
-        borrowBtnPanel.setBackground(Dark);
-        add(borrowBtnPanel);
+        borrowBtnPanel.setBackground(new Color(21, 27, 35));
+        borrowBtnPanel.setBounds(314, 886, 400, 60);
+        borrowMainPanel.add(borrowBtnPanel);
         borrowBtnPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 15));
         
         JLabel borrowBtnLabel = new JLabel("BORROW");
+        borrowBtnLabel.setForeground(new Color(68, 147, 248));
         borrowBtnLabel.setFont(new Font("Roboto SemiBold", Font.PLAIN, 23));
-        borrowBtnLabel.setForeground(Lightest);
         borrowBtnPanel.add(borrowBtnLabel);
         
         JPanel backPanel = new JPanel();
+        backPanel.setBackground(new Color(21, 27, 35));
+        backPanel.setBounds(750, 886, 400, 60);
+        borrowMainPanel.add(backPanel);
+        backPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 15));
+        
 		backPanel.addMouseListener(new MouseAdapter() {
 			
 			@Override
@@ -100,11 +116,8 @@ public class BorrowBookPanel extends JPanel {
 				backPanel.setBackground(Light);
 			}
 			public void mousePressed(MouseEvent e) {
-				//returnPanel.setVisible(false);
-				javax.swing.JPanel.setVisible(false);
-
+				borrowMainPanel.setVisible(false);
 				mainPanel.setVisible(true);
-				//delaysPanel.setVisible(false);
 
 
 				
@@ -112,10 +125,6 @@ public class BorrowBookPanel extends JPanel {
 				
 			}
 		});
-        backPanel.setBackground(new Color(21, 27, 35));
-        backPanel.setBounds(913, 885, 400, 60);
-        add(backPanel);
-        backPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 15));
         
         JLabel backLabel = new JLabel("BACK TO MAIN VIEW");
         backLabel.setForeground(new Color(255, 123, 114));
