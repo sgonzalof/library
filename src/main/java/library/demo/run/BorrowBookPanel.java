@@ -13,6 +13,8 @@ public class BorrowBookPanel extends JPanel {
 
     public BorrowBookPanel() {
     	
+    	
+    	
 
 
 		
@@ -99,7 +101,7 @@ public class BorrowBookPanel extends JPanel {
 			}
 			public void mousePressed(MouseEvent e) {
 				//returnPanel.setVisible(false);
-				borrowPanel.setVisible(false);
+				javax.swing.JPanel.setVisible(false);
 
 				mainPanel.setVisible(true);
 				//delaysPanel.setVisible(false);
