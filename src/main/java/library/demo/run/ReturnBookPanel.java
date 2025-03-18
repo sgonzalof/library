@@ -2,6 +2,8 @@ package library.demo.run;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class ReturnBookPanel extends JPanel {
     public ReturnBookPanel() {
@@ -36,11 +38,11 @@ public class ReturnBookPanel extends JPanel {
         add(bookPanel);
         bookPanel.setLayout(null);
         
-        JLabel lblNewLabel = new JLabel("Book:");
-        lblNewLabel.setFont(new Font("Roboto", Font.PLAIN, 14));
-        lblNewLabel.setBounds(10, 0, 84, 33);
-        bookPanel.add(lblNewLabel);
-        lblNewLabel.setForeground(MoreLightest);
+        JLabel bookLabel = new JLabel("Book:");
+        bookLabel.setFont(new Font("Roboto", Font.PLAIN, 14));
+        bookLabel.setBounds(10, 0, 84, 33);
+        bookPanel.add(bookLabel);
+        bookLabel.setForeground(MoreLightest);
         
         JComboBox bookNameComboBox = new JComboBox();
         bookNameComboBox.setEditable(true);
@@ -67,26 +69,63 @@ public class ReturnBookPanel extends JPanel {
         memberPanel.add(memberComboBox);
         
         JPanel borrowBtnPanel = new JPanel();
-        borrowBtnPanel.setBounds(453, 885, 400, 60);
+        borrowBtnPanel.setBounds(224, 699, 400, 60);
         borrowBtnPanel.setBackground(Dark);
         add(borrowBtnPanel);
         borrowBtnPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 15));
+        
+        
         
         JLabel borrowBtnLabel = new JLabel("BORROW");
         borrowBtnLabel.setFont(new Font("Roboto SemiBold", Font.PLAIN, 23));
         borrowBtnLabel.setForeground(Lightest);
         borrowBtnPanel.add(borrowBtnLabel);
         
+		borrowBtnPanel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				borrowBtnPanel.setBackground(HoverBtnColor);
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				borrowBtnPanel.setBackground(Light);
+			}
+			@Override
+			
+			public void mousePressed(MouseEvent e) {
+
+				
+			}
+		});
+        
         JPanel backPanel = new JPanel();
         backPanel.setBackground(new Color(21, 27, 35));
-        backPanel.setBounds(913, 885, 400, 60);
+        backPanel.setBounds(785, 699, 400, 60);
         add(backPanel);
         backPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 15));
+        
+		backPanel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				backPanel.setBackground(HoverBtnColor);
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				backPanel.setBackground(Light);
+			}
+			@Override
+			
+			public void mousePressed(MouseEvent e) {
+
+				
+			}
+		});
         
         JLabel backLabel = new JLabel("BACK TO MAIN VIEW");
         backLabel.setForeground(new Color(255, 123, 114));
         backLabel.setFont(new Font("Roboto SemiBold", Font.PLAIN, 23));
         backPanel.add(backLabel);
+
         
 
         setVisible(true);

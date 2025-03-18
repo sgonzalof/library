@@ -27,6 +27,7 @@ import java.awt.Component;
 import javax.swing.table.DefaultTableModel;
 
 import library.demo.util.LibraryFrame;
+
 import library.demo.util.LibraryButtons;
 
 import javax.swing.ImageIcon;
@@ -46,7 +47,8 @@ public class LibraryView3 extends LibraryFrame {
 	private JTable table_3;
     private CardLayout cardLayout;
     private JPanel mainPanel;
-    private BorrowBookPanel borrowBookPanel;
+    private BorrowBookPanel borrowMainPanel;
+
 
 
     
@@ -81,7 +83,7 @@ public class LibraryView3 extends LibraryFrame {
 		// Comment the 3 below lines to see the frame in the window builder,
 		// then uncomment the next JFrame lines
 		//
-        
+        /*
 	
 
 
@@ -92,10 +94,10 @@ public class LibraryView3 extends LibraryFrame {
         getContentPane().setLayout(new BorderLayout());
 		
 
-
+		*/
         
         
-		/*
+		
 	
 
 		
@@ -105,7 +107,7 @@ public class LibraryView3 extends LibraryFrame {
 		frmLibrary.setBounds(0, 0, 1920, 1080);
 		frmLibrary.getContentPane().setLayout(null);
 		
-		*/
+		
         
         
         //cardLayout = new CardLayout();
@@ -118,12 +120,14 @@ public class LibraryView3 extends LibraryFrame {
 
 		ReturnBookPanel returnPanel = new ReturnBookPanel();
 		ShowDelaysPanel delaysPanel = new ShowDelaysPanel();
+		BorrowBookPanel borrowPanel = new BorrowBookPanel();
 		
-		//frmLibrary.add(borrowPanel);
+		
+		frmLibrary.add(borrowPanel);
 		frmLibrary.add(returnPanel);
 		frmLibrary.add(delaysPanel);
 	
-		//borrowPanel.setVisible(false);
+		borrowPanel.setVisible(false);
         returnPanel.setVisible(false);
         delaysPanel.setVisible(false);
         mainPanel.setVisible(true);
@@ -185,18 +189,19 @@ public class LibraryView3 extends LibraryFrame {
 		
 	
 
-			@Override
-			
 			public void mousePressed(MouseEvent e) {
-				BorrowBookPanel borrowPanel = new BorrowBookPanel(mainPanel);
-				
 
 				mainPanel.setVisible(false);
-				borrowPanel.setVisible(true);
-				returnPanel.setVisible(false);
+				
+				
+
 				delaysPanel.setVisible(false);
+				returnPanel.setVisible(false);
+				borrowPanel.setVisible(true);
 				
 			}
+				
+			
 			
 		
 		});
@@ -235,7 +240,7 @@ public class LibraryView3 extends LibraryFrame {
 
 				mainPanel.setVisible(false);
 				returnPanel.setVisible(true);
-				//borrowPanel.setVisible(false);
+				borrowPanel.setVisible(false);
 
 				delaysPanel.setVisible(false);
 				
@@ -276,7 +281,7 @@ public class LibraryView3 extends LibraryFrame {
 				mainPanel.setVisible(false);
 				delaysPanel.setVisible(true);
 				returnPanel.setVisible(false);
-				//borrowPanel.setVisible(false);
+				borrowPanel.setVisible(false);
 
 				
 				
@@ -491,10 +496,11 @@ public class LibraryView3 extends LibraryFrame {
 		// TABLES
 		
 		JScrollPane libscrollPane = new JScrollPane();
-		libscrollPane.setBounds(50, 76, 1650, 321);
+		libscrollPane.setBounds(50, 76, 1290, 321);
 		mainPanel.add(libscrollPane);
 		
 		table_3 = new JTable();
+
 		table_3.setModel(new DefaultTableModel(
 			new Object[][] {
 			},
@@ -504,10 +510,12 @@ public class LibraryView3 extends LibraryFrame {
 		));
 		libscrollPane.setViewportView(table_3);
 		
+
+		
 		
 		
 		JScrollPane membscrollPane = new JScrollPane();
-		membscrollPane.setBounds(50, 461, 1650, 321);
+		membscrollPane.setBounds(50, 461, 1290, 321);
 		mainPanel.add(membscrollPane);
 		
 		table_2 = new JTable();
@@ -525,6 +533,12 @@ public class LibraryView3 extends LibraryFrame {
 	
 	
 	}
+
+
+
+
+
+
 
 
 

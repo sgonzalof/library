@@ -39,30 +39,34 @@ public class LibraryView {
 	}
 	
 	private void initialize() {
+		 /*
+		 this is commented because i added the class LibraryFrame, so 
+		 its called with all settings of the frames of the library
+		  
+		  TO-DO -- add to the logging frame (SwingMain.java)
+		  TO-DO -- add class for buttons 
+		  
+		*/  
 		
-		/* this is commented because i added the class LibraryFrame, so 
-		 * its called with all settings of the frames of the library
-		 * 
-		 * TO-DO -- add to the logging frame (SwingMain.java)
-		 * TO-DO -- add class for buttons 
-		 * 
-		 * 
+		 
 		frmLibrary = new JFrame();
 		frmLibrary.setDefaultCloseOperation(frmLibrary.EXIT_ON_CLOSE);
 		frmLibrary.setTitle("LIBRARY MANAGER");
 		frmLibrary.setBounds(40, 40, 1080, 660);
 		frmLibrary.getContentPane().setLayout(null);
 		frmLibrary.getContentPane().setBackground(Color.DARK_GRAY);
+		frmLibrary.setVisible(true);
+		
 		
 		
 		ImageIcon logo = new ImageIcon("library-book-logo.png");
 		frmLibrary.setIconImage(logo.getImage());
-		*/
 		
+		/*
 		LibraryFrame frmLibrary = new LibraryFrame();
-		frmLibrary.setVisible(true);
+
 		frmLibrary.setTitle("LIBRARY MANAGER");
-		
+		*/
 		// first panel, borrow book and return book buttons
 		
 		JPanel topPanel = new JPanel();
@@ -72,6 +76,10 @@ public class LibraryView {
 		topPanel.setLayout(new GridLayout(0, 2, 10, 10));
 		
 		LibraryButtons borrowBookButton = new LibraryButtons("Borrow Book");
+		borrowBookButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		borrowBookButton.setForeground(new Color(0, 0, 0));
 		borrowBookButton.setFocusable(false);
 		borrowBookButton.setBackground(new Color(138, 255, 128));
@@ -157,15 +165,7 @@ public class LibraryView {
 		fourthPanel.setLayout(new GridLayout(0, 5, 10, 10));
 		
 		LibraryButtons showMembersButton = new LibraryButtons("Show Members");
-		showMembersButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				BorrowBookPanel bookPanel = new BorrowBookPanel();
-				frmLibrary.add(bookPanel);
-				fourthPanel.setVisible(false);
-				bookPanel.setVisible(true);
-			}
-		});
-		fourthPanel.add(showMembersButton);
+				fourthPanel.add(showMembersButton);
 		
 		LibraryButtons addMemberButton = new LibraryButtons("Add Member");
 		fourthPanel.add(addMemberButton);

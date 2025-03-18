@@ -210,8 +210,9 @@ public class SwingMain {
 
 				
 
-				LibraryView3 library = new LibraryView3();
-
+				LibraryView library = new LibraryView(); // switch between LibraryView and LibraryView3
+				frame.dispose();
+				
 				}	
 		});
 
