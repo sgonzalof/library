@@ -2,6 +2,7 @@ package library.demo.run;
 
 import javax.swing.JFrame;
 
+
 //import net.miginfocom.swing.MigLayout;
 import javax.swing.JButton;
 import java.awt.GridLayout;
@@ -32,13 +33,14 @@ public class LibraryView {
 	private JTable table;
 	private JTable table_1;
 	private JTable table_2;
+	private LibraryController controller;
 
 	
-	public LibraryView() {
-		initialize();
+	public LibraryView(LibraryController c) {
+		initialize(c);
 	}
 	
-	private void initialize() {
+	private void initialize(LibraryController c) {
 		 /*
 		 this is commented because i added the class LibraryFrame, so 
 		 its called with all settings of the frames of the library
@@ -47,7 +49,7 @@ public class LibraryView {
 		  TO-DO -- add class for buttons 
 		  
 		*/  
-		
+		controller = c;
 		 
 		frmLibrary = new JFrame();
 		frmLibrary.setDefaultCloseOperation(frmLibrary.EXIT_ON_CLOSE);
@@ -210,4 +212,5 @@ public class LibraryView {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 }

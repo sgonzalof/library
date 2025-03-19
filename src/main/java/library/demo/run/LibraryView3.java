@@ -83,7 +83,7 @@ public class LibraryView3 extends LibraryFrame {
 		// Comment the 3 below lines to see the frame in the window builder,
 		// then uncomment the next JFrame lines
 		//
-        /*
+        
 	
 
 
@@ -94,20 +94,20 @@ public class LibraryView3 extends LibraryFrame {
         getContentPane().setLayout(new BorderLayout());
 		
 
-		*/
+		
         
         
 		
 	
 
-		
+		/*
 		
 		JFrame frmLibrary = new JFrame();  //change this lines with the commented section above
 		frmLibrary.setResizable(false);
 		frmLibrary.setBounds(0, 0, 1920, 1080);
 		frmLibrary.getContentPane().setLayout(null);
 		
-		
+		*/
         
         
         //cardLayout = new CardLayout();

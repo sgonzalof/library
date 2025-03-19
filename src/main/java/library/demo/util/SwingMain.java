@@ -10,12 +10,17 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
 import javax.swing.UIManager.LookAndFeelInfo;
+
+import com.formdev.flatlaf.FlatLightLaf;
+
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 import library.demo.run.*;
+
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 
@@ -24,6 +29,8 @@ import javax.swing.JTextPane;
 import javax.swing.JPasswordField;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+
+
 
 
 /**
@@ -96,15 +103,15 @@ public class SwingMain {
 				}
 				
 				
-				/* 
-				 * this is commented because i implement the NIMBUS THEME
-				 * only as reminder
-				 * 
-				 * 
 				
+			
+			
+				 
+			
+				/*
 				try {
 					
-					//FlatLightLaf.setup();
+					FlatLightLaf.setup();
 					SwingMain window = new SwingMain();
 
 					
@@ -115,7 +122,8 @@ public class SwingMain {
 					
 				} catch (Exception e) {
 					e.printStackTrace(); //NOSONAR codigo autogenerado
-				}*/
+				}
+				*/
 			}
 		});
 	}
@@ -210,9 +218,15 @@ public class SwingMain {
 
 				
 
-				LibraryView library = new LibraryView(); // switch between LibraryView and LibraryView3
-				frame.dispose();
+				LibraryController controller = new LibraryController();
+				controller.setVistaModel(new LibraryView(controller), new LibraryModel());
 				
+				/*
+				LibraryView library = new LibraryView(); // switch between LibraryView and LibraryView3
+				
+				*/
+				
+				frame.dispose();   // esto cerraba la ventana de login, al crear LibraryController y LibraryModel dejo de funcionar
 				}	
 		});
 
