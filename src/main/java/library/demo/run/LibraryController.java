@@ -20,12 +20,17 @@ public class LibraryController {
 	
 	//a partir de aqui, implementamos los metodos de las funcionalidades correspondientes
 	
-	public void AniadirArticulosPedido(int i) {
+	public void GetTable1() {
+		int i;
+		List<Object[]> lista = null;
 		//metodo para rellenar la tabla de articulos y pedidos
+		lista=model.GetTable1();
+		//una vez que me devuelva el modelo el resultado de la consulta, analizo la lista devuelta:
 		
-		
-		
-		
+		for (i=0; i<lista.size();i++) {
+			view.ShowTable1(lista.get(i));
+		}
+				
 	};
 	
 

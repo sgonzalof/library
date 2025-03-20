@@ -30,10 +30,11 @@ import javax.swing.ImageIcon;
 public class LibraryView {
 	
 	protected JFrame frmLibrary;
-	private JTable table;
 	private JTable table_1;
 	private JTable table_2;
 	private LibraryController controller;
+	private DefaultTableModel modelTable1;
+	private DefaultTableModel modelTable2;
 
 	
 	public LibraryView(LibraryController c) {
@@ -41,14 +42,29 @@ public class LibraryView {
 	}
 	
 	private void initialize(LibraryController c) {
-		 /*
-		 this is commented because i added the class LibraryFrame, so 
-		 its called with all settings of the frames of the library
-		  
-		  TO-DO -- add to the logging frame (SwingMain.java)
-		  TO-DO -- add class for buttons 
-		  
-		*/  
+		
+		modelTable1 = new DefaultTableModel(
+
+				
+				new Object[][] {
+				},
+				new String[] {
+					"isbn", "title", "writer", "year", "category", "borrowed"
+				}
+				
+			);
+		
+		modelTable2 = new DefaultTableModel(
+				new Object[][] {
+				},
+				new String[] {
+					"Name", "Member Id", "Has a book", "Staff", "Age", "Tlf"
+				}
+			);
+		
+		
+		
+  
 		controller = c;
 		 
 		frmLibrary = new JFrame();
@@ -129,32 +145,12 @@ public class LibraryView {
 		JScrollPane scrollPane = new JScrollPane();
 		thirdPanel.add(scrollPane);
 		
+		
+		
 		table_1 = new JTable();
 				
-		table_1.setModel(new DefaultTableModel(
+		table_1.setModel(modelTable1);
 
-				
-			new Object[][] {
-			},
-			new String[] {
-				"Book Name", "Writer", "Year", "Category", "Borrowed"
-			}
-			
-		));
-		
-		/*
-		 * 
-		 * commented because doesn't work
-		 * 
-		 * 
-		
-		table_1.setForeground(new Color(0,0,0));
-		table_1.setBackground(new Color(0,0,0));
-		table_1.setGridColor(new Color(0,0,0));
-		table_1.
-		
-		
-		*/
 		scrollPane.setViewportView(table_1);
 		
 		
@@ -194,13 +190,7 @@ public class LibraryView {
 		bottomPanel.add(scrollPane2);
 		
 		table_2 = new JTable();
-		table_2.setModel(new DefaultTableModel(
-			new Object[][] {
-			},
-			new String[] {
-				"Name", "Member Id", "Has a book", "Staff", "Age", "Tlf"
-			}
-		));
+		table_2.setModel(modelTable2);
 		scrollPane2.setViewportView(table_2);
 		
 
@@ -211,6 +201,15 @@ public class LibraryView {
 	private JButton JButton(String string) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	public void ShowTable1(Object[] rowBook) {
+		// TODO Auto-generated method stub
+		this.modelTable1.addRow(rowBook);//para añadir una fila a la tabla lo primero que tengo que añadir es la 
+												//fila al modelo correspondiente a esa tabla
+		this.table_1.setModel(modelTable1);  //una vez la tenga añadida al modelo, muestro el modelo en la tabla
+		
+		
 	}
 
 }
