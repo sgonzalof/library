@@ -42,30 +42,32 @@ public class LibraryView {
 	}
 	
 	private void initialize(LibraryController c) {
+		this.controller = c;
 		
 		modelTable1 = new DefaultTableModel(
-
-				
 				new Object[][] {
+					{null, null, null, null, null, null},
 				},
 				new String[] {
-					"isbn", "title", "writer", "year", "category", "borrowed"
+					"ISBN", "TITLE", "WRITER", "YEAR", "CAT", "IS BORROWED"
 				}
 				
 			);
 		
+		
 		modelTable2 = new DefaultTableModel(
 				new Object[][] {
+					{null, null, null, null, null, null, null},
 				},
 				new String[] {
-					"Name", "Member Id", "Has a book", "Staff", "Age", "Tlf"
+					"ID", "NAME", "IS STAFF", "BIRTHDATE", "CAT", "TLF", "HAS BOOKS"
 				}
 			);
 		
 		
 		
   
-		controller = c;
+
 		 
 		frmLibrary = new JFrame();
 		frmLibrary.setDefaultCloseOperation(frmLibrary.EXIT_ON_CLOSE);
@@ -125,6 +127,19 @@ public class LibraryView {
 		secondPanel.add(showLibraryButton);
 		
 		LibraryButtons addBookButton = new LibraryButtons("Add Book");
+		addBookButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				String isbn = (String) table_1.getValueAt(0, 0);
+				String title = (String) table_1.getValueAt(0, 1);
+				String writer = (String) table_1.getValueAt(0, 2);
+				String year = (String) table_1.getValueAt(0, 3);
+				String category = (String) table_1.getValueAt(0, 4);
+				String borrowed = (String) table_1.getValueAt(0, 5);
+				controller.addBookRow(isbn, title, writer, year, category, borrowed);
+				
+			}
+		});
 		secondPanel.add(addBookButton);
 		
 		LibraryButtons removeBookButton = new LibraryButtons("Remove Book");
@@ -148,10 +163,9 @@ public class LibraryView {
 		
 		
 		table_1 = new JTable();
-				
 		table_1.setModel(modelTable1);
-
 		scrollPane.setViewportView(table_1);
+		
 		
 		
 		// fourth panel, member administration buttons
@@ -197,6 +211,10 @@ public class LibraryView {
 			
 
 	}
+	
+	public JFrame getFrame() {
+		return this.frmLibrary;
+	}
 
 	private JButton JButton(String string) {
 		// TODO Auto-generated method stub
@@ -204,12 +222,36 @@ public class LibraryView {
 	}
 
 	public void ShowTable1(Object[] rowBook) {
-		// TODO Auto-generated method stub
-		this.modelTable1.addRow(rowBook);//para añadir una fila a la tabla lo primero que tengo que añadir es la 
-												//fila al modelo correspondiente a esa tabla
-		this.table_1.setModel(modelTable1);  //una vez la tenga añadida al modelo, muestro el modelo en la tabla
-		
-		
+	    if (rowBook == null) {
+	        System.out.println("Advertencia: Se intentó agregar una fila nula a la tabla.");
+	        return;
+	    }
+
+	    if (modelTable1 == null) {
+	        System.out.println("Error: modelTable1 no está inicializado.");
+	        return;
+	    }
+
+	    // Agregamos la fila al modelo sin volver a establecerlo en la tabla
+	    modelTable1.addRow(rowBook);
+
 	}
+	
+	public void ShowTable2(Object[] rowBook) {
+	    if (rowBook == null) {
+	        System.out.println("Advertencia: Se intentó agregar una fila nula a la tabla.");
+	        return;
+	    }
+
+	    if (modelTable2 == null) {
+	        System.out.println("Error: modelTable1 no está inicializado.");
+	        return;
+	    }
+
+	    // Agregamos la fila al modelo sin volver a establecerlo en la tabla
+	    modelTable2.addRow(rowBook);
+
+	}
+
 
 }

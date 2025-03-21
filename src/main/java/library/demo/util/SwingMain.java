@@ -219,14 +219,10 @@ public class SwingMain {
 				
 
 				LibraryController controller = new LibraryController();
-				controller.setVistaModel(new LibraryView(controller), new LibraryModel());
-				
-				/*
-				LibraryView library = new LibraryView(); // switch between LibraryView and LibraryView3
-				
-				*/
-				
-				frame.dispose();   // esto cerraba la ventana de login, al crear LibraryController y LibraryModel dejo de funcionar
+				LibraryView library = new LibraryView(controller); // switch between LibraryView and LibraryView3
+				LibraryModel model = new LibraryModel();
+				controller.setVistaModel(library, model);
+				frame.dispose();   // esto cerraba la ventana de login
 				}	
 		});
 
@@ -236,7 +232,7 @@ public class SwingMain {
 	    
 
 
-	    frame.setVisible(true); // Ensure frame is visible
+	    frame.setVisible(true); // Ensurbe frame is visible
 		
 		
 		//frame.getContentPane().add(btnNewButton, BorderLayout.CENTER);
@@ -250,7 +246,7 @@ public class SwingMain {
 
 
 		
-	//public JFrame getFrame() { return this.frame; }
+	public JFrame getFrame() { return this.frame; }
 	
 	
 	
