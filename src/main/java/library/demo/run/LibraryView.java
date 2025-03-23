@@ -87,13 +87,21 @@ public class LibraryView {
 
 		frmLibrary.setTitle("LIBRARY MANAGER");
 		*/
-		// first panel, borrow book and return book buttons
+		
+		
+		
+		/*
+		 * 		first panel, borrow book and return book buttons
+		 */
+
 		
 		JPanel topPanel = new JPanel();
 		topPanel.setBounds(10, 10, 1044, 50);
 		
 		frmLibrary.getContentPane().add(topPanel);
 		topPanel.setLayout(new GridLayout(0, 2, 10, 10));
+		
+		// --- BORROW BTN ---
 		
 		LibraryButtons borrowBookButton = new LibraryButtons("Borrow Book");
 		borrowBookButton.addActionListener(new ActionListener() {
@@ -105,6 +113,7 @@ public class LibraryView {
 		borrowBookButton.setBackground(new Color(138, 255, 128));
 		topPanel.add(borrowBookButton);
 		
+		// --- RETURN BTN ---
 		
 		LibraryButtons returnBookButton = new LibraryButtons("Return Book");
 		returnBookButton.setFocusable(false);
@@ -113,9 +122,9 @@ public class LibraryView {
 		topPanel.add(returnBookButton);
 		
 		
-		
-		// second panel, library buttons
-		
+		/*
+		 * 		second panel, library button
+		*/
 		JPanel secondPanel = new JPanel();
 		secondPanel.setBounds(10, 70, 1044, 50);
 		
@@ -126,30 +135,54 @@ public class LibraryView {
 		LibraryButtons showLibraryButton = new LibraryButtons("Show Library");
 		secondPanel.add(showLibraryButton);
 		
+		// --- ADD BOOK BTN ---
+		
 		LibraryButtons addBookButton = new LibraryButtons("Add Book");
 		addBookButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
 				String isbn = (String) table_1.getValueAt(0, 0);
 				String title = (String) table_1.getValueAt(0, 1);
 				String writer = (String) table_1.getValueAt(0, 2);
 				String year = (String) table_1.getValueAt(0, 3);
 				String category = (String) table_1.getValueAt(0, 4);
 				String borrowed = (String) table_1.getValueAt(0, 5);
+
 				controller.addBookRow(isbn, title, writer, year, category, borrowed);
+				
+				modelTable1.insertRow(0, new Object[][] {null, null, null, null, null, null});
+
+					}
+				
+			}
+		);
+		secondPanel.add(addBookButton);
+		
+		// --- REMOVE BOOK BTN ---
+		
+		LibraryButtons removeBookButton = new LibraryButtons("Remove Book");
+		removeBookButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				controller.deleteSelectedBook(table_1);
+			}
+		});
+		secondPanel.add(removeBookButton);
+		
+		
+		// --- MODIFY BOOK BTN ---
+		
+		LibraryButtons modifyBookButton = new LibraryButtons("Modify Book");
+		modifyBookButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				controller.saveTable(table_1);
 				
 			}
 		});
-		secondPanel.add(addBookButton);
-		
-		LibraryButtons removeBookButton = new LibraryButtons("Remove Book");
-		secondPanel.add(removeBookButton);
-		
-		LibraryButtons modifyBookButton = new LibraryButtons("Modify Book");
 		secondPanel.add(modifyBookButton);
 		
 		
-		// third panel, library table
+		/*
+		 * 		third panel, library table
+		 */
 		
 		JPanel thirdPanel = new JPanel();
 		thirdPanel.setBounds(10, 130, 1044, 200);
@@ -167,8 +200,10 @@ public class LibraryView {
 		scrollPane.setViewportView(table_1);
 		
 		
-		
-		// fourth panel, member administration buttons
+		/*
+		 * 		fourth panel, member administration buttons
+		 */
+
 		
 		JPanel fourthPanel = new JPanel();
 		fourthPanel.setBounds(10,350,1044,50);
@@ -176,23 +211,60 @@ public class LibraryView {
 		frmLibrary.getContentPane().add(fourthPanel);
 		fourthPanel.setLayout(new GridLayout(0, 5, 10, 10));
 		
+		// --- SHOW MEMBERS BTN ---
+		
 		LibraryButtons showMembersButton = new LibraryButtons("Show Members");
 				fourthPanel.add(showMembersButton);
 		
+		// --- ADD MEMBER BTN --
+				
 		LibraryButtons addMemberButton = new LibraryButtons("Add Member");
+		addMemberButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String idMember = (String) table_2.getValueAt(0, 0);
+				String name = (String) table_2.getValueAt(0, 1);
+				String staff = (String) table_2.getValueAt(0, 2);
+				String birthDate = (String) table_2.getValueAt(0, 3);
+				String category = (String) table_2.getValueAt(0, 4);
+				String tlf = (String) table_2.getValueAt(0, 5);
+				String hasABook = (String) table_2.getValueAt(0, 6);
+
+				controller.addMemberRow(idMember, name, staff, birthDate, category, tlf, hasABook);
+				
+				modelTable2.insertRow(0, new Object[][] {null, null, null, null, null, null, null});
+
+				
+			}
+		});
 		fourthPanel.add(addMemberButton);
 		
+		// --- REMOVE MEMBER BTN ---
+		
 		LibraryButtons removeMemberButton = new LibraryButtons("Remove Member");
+		removeMemberButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				controller.deleteSelectedMember(table_2);
+			}
+		});
 		fourthPanel.add(removeMemberButton);
 		
+		// --- MODIFY MEMBER BTN ---
+		
 		LibraryButtons modifyMemberButton = new LibraryButtons("Modify Member");
+		modifyMemberButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				controller.saveTable(table_2);
+			}
+		});
 		fourthPanel.add(modifyMemberButton);
 		
 		LibraryButtons showDelaysButton = new LibraryButtons("Show Delays");
 		fourthPanel.add(showDelaysButton);
 		
-		
-		// bottom panel, member table
+		/*
+		 * 	bottomPanel , members table
+		 */
+
 		
 		JPanel bottomPanel = new JPanel();
 		bottomPanel.setBounds(10,410,1044,200);

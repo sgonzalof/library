@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
 
+import javax.swing.JTable;
 
 import library.demo.run.LibraryModel;
 import library.demo.run.LibraryView;
@@ -77,8 +78,33 @@ public class LibraryController {
 
 	public void addBookRow(String i, String t, String w, String y, String c, String b ) {
 		model.addBook(i, t, w, y, c, b);
+		
 
 	   
 	    }
+
+	public void saveTable(JTable table) {
+		model.saveTableData(table);
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void deleteSelectedBook(JTable table ) {
+		model.deleteSelectedRow(table);
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void addMemberRow(String idMember, String name, String staff, String birthDate, String category, String tlf,
+			String hasABook) {
+		model.addMember(idMember, name, staff, birthDate, category , tlf, hasABook);
+
+		
+	}
+
+	public void deleteSelectedMember(JTable table) {
+		model.deleteSelectedRow(table);
+
+	}
 	
 }

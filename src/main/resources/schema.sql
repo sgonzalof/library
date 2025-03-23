@@ -8,13 +8,13 @@ drop table members;
 
 
 
-CREATE TABLE IF NOT EXISTS "book" (
-	"isbn"	INTEGER NOT NULL,
-	"title"	TEXT NOT NULL,
-	"writer"	TEXT NOT NULL,
-	"year"	INTEGER NOT NULL,
-	"category"	INTEGER NOT NULL,
-	"borrowed"	INTEGER NOT NULL,
+CREATE TABLE "book" (
+	"isbn"	INTEGER,
+	"title"	TEXT,
+	"writer"	TEXT,
+	"year"	INTEGER,
+	"category"	INTEGER,
+	"borrowed"	INTEGER,
 	PRIMARY KEY("isbn")
 );
 
