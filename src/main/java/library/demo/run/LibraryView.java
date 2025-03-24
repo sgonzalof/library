@@ -33,6 +33,7 @@ public class LibraryView {
 	private JTable table_1;
 	private JTable table_2;
 	private LibraryController controller;
+	private BorrowBookController controllerBorrow;
 	private DefaultTableModel modelTable1;
 	private DefaultTableModel modelTable2;
 
@@ -106,8 +107,13 @@ public class LibraryView {
 		LibraryButtons borrowBookButton = new LibraryButtons("Borrow Book");
 		borrowBookButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			}
-		});
+
+				BorrowBookView borrowView = new BorrowBookView(controllerBorrow); // switch between LibraryView and LibraryView3
+				LibraryModel model = new LibraryModel();
+				controller.setBorrowModel(borrowView, model);
+				frmLibrary.dispose();   // esto cerraba la ventana de login
+				}	
+			});
 		borrowBookButton.setForeground(new Color(0, 0, 0));
 		borrowBookButton.setFocusable(false);
 		borrowBookButton.setBackground(new Color(138, 255, 128));

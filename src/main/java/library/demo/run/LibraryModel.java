@@ -7,6 +7,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 
@@ -249,18 +250,12 @@ public class LibraryModel {
 	        e.printStackTrace();
 	        JOptionPane.showMessageDialog(null, "Error al eliminar la fila.");
 	    }
-	}
 	
-	
+	    
+	};
 
-	
-
-	
-	
+    
 }
-	
-	
-	
     
 
 

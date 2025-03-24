@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
 
+import javax.swing.DefaultListModel;
 import javax.swing.JTable;
 
 import library.demo.run.LibraryModel;
@@ -14,6 +15,8 @@ import library.demo.util.DbUtil;
 public class LibraryController {
 	private LibraryModel model;
 	private LibraryView view;
+	private LibraryModel borrowM;
+	private BorrowBookView borrowV;
 	String valueTitle;
 	
 	
@@ -24,6 +27,14 @@ public class LibraryController {
 		this.view.getFrame().setVisible(true);
         getTable1(); // Llama a getTable1() para cargar los datos
         getTable2();
+	}
+	
+	public void setBorrowModel(BorrowBookView bV, LibraryModel bM) {
+		this.borrowM = bM;
+		this.borrowV = bV;
+		//no hay inicializacion especifica del modelo, solo de la vista
+		this.view.getFrame().setVisible(true);
+
 	}
 	
 	//a partir de aqui, implementamos los metodos de las funcionalidades correspondientes
@@ -106,5 +117,7 @@ public class LibraryController {
 		model.deleteSelectedRow(table);
 
 	}
+
+
 	
 }
