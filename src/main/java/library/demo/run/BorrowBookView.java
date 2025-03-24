@@ -8,10 +8,12 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import org.sqlite.core.DB;
 
+import library.demo.util.Database;
 import library.demo.util.DbUtil;
 
 import javax.swing.JLabel;
@@ -21,12 +23,13 @@ import net.miginfocom.swing.MigLayout;
 
 public class BorrowBookView {
 	
-	protected JFrame frmLibrary;
+	protected JFrame frmBorrow;
 	private BorrowBookController controller;
 	private BorrowBookModel model;
 	private DefaultTableModel borrowTable;
-	private DbUtil DatabaseToJList;
-	private DefaultListModel modelList = new DefaultListModel();
+	private DefaultListModel<String> modelList = new DefaultListModel<String>();
+	private JTable table;
+
 
 	
 	public BorrowBookView(BorrowBookController controller) {
@@ -38,62 +41,86 @@ public class BorrowBookView {
 	private void initialize() {
 
 		 
-		frmLibrary = new JFrame();
-		frmLibrary.setDefaultCloseOperation(frmLibrary.EXIT_ON_CLOSE);
-		frmLibrary.setTitle("BORROW BOOK VIEW");
-		frmLibrary.setBounds(40, 40, 1080, 660);
-		frmLibrary.getContentPane().setLayout(null);
-		frmLibrary.getContentPane().setBackground(Color.DARK_GRAY);
-		frmLibrary.setVisible(true);	
+		frmBorrow = new JFrame();
+		
+		frmBorrow.setDefaultCloseOperation(frmBorrow.EXIT_ON_CLOSE);
+		frmBorrow.setTitle("BORROW BOOK VIEW");
+		frmBorrow.setBounds(40, 40, 1080, 660);
+		frmBorrow.getContentPane().setLayout(null);
+		frmBorrow.getContentPane().setBackground(Color.DARK_GRAY);
+		frmBorrow.setVisible(true);	
 		
 		ImageIcon logo = new ImageIcon("library-book-logo.png");
-		frmLibrary.setIconImage(logo.getImage());
+		frmBorrow.setIconImage(logo.getImage());
 		
 		
-		
+        // --- TOP PANEL --- return btn
 		
 		JPanel topPanel = new JPanel();
 		topPanel.setBounds(10, 10, 1044, 50);
-		frmLibrary.getContentPane().add(topPanel);
-		topPanel.setLayout(new GridLayout(0, 1, 10, 10));
+		frmBorrow.getContentPane().add(topPanel);
+		topPanel.setLayout(new GridLayout(0, 1, 1, 10));
 		
 		JButton borrowBtn = new JButton("BORROW");
 		topPanel.add(borrowBtn);
 		
+		// --- SECOND PANTEL --- 
+		//   ---BOOK PANEL --- book JList - select book btn
+		
 		
 		JPanel secondPanel = new JPanel();
-		secondPanel.setBounds(10, 70, 1044, 50);
-		secondPanel.setVisible(true);		
-		frmLibrary.getContentPane().add(secondPanel);
-		secondPanel.setLayout(new MigLayout("", "[900px:n:900px][150px:n:150px]", "[50px,grow]"));
-		
+		secondPanel.setBounds(10, 70, 1044, 200);
+		secondPanel.setVisible(true);
+		frmBorrow.getContentPane().add(secondPanel);
+		secondPanel.setLayout(new MigLayout("", "[900px][150px]", "[300px]"));
 
 		
 		JList<String> borrowBookList = new JList<>(modelList);
-        secondPanel.add(new JScrollPane(borrowBookList));
-		controller.getBooks(modelList);
-		//borrowBookList.setModel(modelList);
-		
-		//secondPanel.add(borrowBookList);
-		borrowBookList.setVisible(true);
+
+        secondPanel.add(new JScrollPane(borrowBookList), "cell 0 0,grow");
+        controller.getBooks(modelList);
+        
 
 	
 				
 		
 		JButton selectBookBtn = new JButton("Select book");
-		secondPanel.add(selectBookBtn, "cell 1 0");
+		selectBookBtn.setSize(2, 50);
+		secondPanel.add(selectBookBtn, "cell 1 0,alignx center,aligny center");
+		
+		
+		// --- THIRD PANEL ---
+		
 		
 		JPanel thirdPanel = new JPanel();
-		thirdPanel.setBounds(10, 131, 1044, 50);
-		frmLibrary.getContentPane().add(thirdPanel);
-		thirdPanel.setLayout(new MigLayout("", "[900px:n:900px][150px:n:150px]", "[grow]"));
+		thirdPanel.setBounds(10, 280, 1044, 200);
+		frmBorrow.getContentPane().add(thirdPanel);
+		thirdPanel.setLayout(new MigLayout("", "[900px][150px]", "[300px,grow]"));
 		
-		JList borrowMemberlist = new JList();
-		thirdPanel.add(borrowMemberlist, "flowx,cell 0 0,grow");
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(0, 0, 2, 2);
+		thirdPanel.add(scrollPane, "cell 0 0,grow");
+
+		JTable borrowMemberTable = new JTable();
+        controller.getMembers(borrowMemberTable);
+		scrollPane.setViewportView(borrowMemberTable);
+	
+		//thirdPanel.add(borrowMemberTable, "flowx,cell 0 0,grow");
+		
+
+        //thirdPanel.add(new JScrollPane(borrowMemberTable), "cell 0 0,grow");
+
+
+
+		
 		
 		JButton selectMemberBtn = new JButton("Select member");
 		thirdPanel.add(selectMemberBtn, "cell 1 0");
+	
 		
+		
+ 
 		
 	}
 }

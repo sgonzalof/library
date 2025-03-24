@@ -23,6 +23,7 @@ import java.awt.Color;
 import javax.swing.table.DefaultTableModel;
 
 import library.demo.util.LibraryFrame;
+import library.demo.util.Database;
 import library.demo.util.LibraryButtons;
 
 import javax.swing.ImageIcon;
@@ -36,6 +37,8 @@ public class LibraryView {
 	private BorrowBookController controllerBorrow;
 	private DefaultTableModel modelTable1;
 	private DefaultTableModel modelTable2;
+	private Database db;
+
 
 	
 	public LibraryView(LibraryController c) {
@@ -107,11 +110,17 @@ public class LibraryView {
 		LibraryButtons borrowBookButton = new LibraryButtons("Borrow Book");
 		borrowBookButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				BorrowBookModel modelBorrow = new BorrowBookModel();
+				BorrowBookController controllerBorrow = new BorrowBookController(modelBorrow);
 
+				
 				BorrowBookView borrowView = new BorrowBookView(controllerBorrow); // switch between LibraryView and LibraryView3
-				LibraryModel model = new LibraryModel();
-				controller.setBorrowModel(borrowView, model);
+
+				//controllerBorrow.setBorrowModel(borrowView, model);
 				frmLibrary.dispose();   // esto cerraba la ventana de login
+				
+				
 				}	
 			});
 		borrowBookButton.setForeground(new Color(0, 0, 0));
