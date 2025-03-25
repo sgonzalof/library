@@ -33,6 +33,7 @@ public class BorrowBookView {
 	private JTable table;
 	private LibraryController c;
 
+
 	
 	public BorrowBookView(BorrowBookController controller) {
 		this.controller = controller;
@@ -84,8 +85,13 @@ public class BorrowBookView {
 				System.out.println("Valor de borrowBookList: " + b);
 
 				controller.borrowBook(a, b);
+				
+				
+				LibraryController c = new LibraryController();
+				LibraryView library = new LibraryView(c); // switch between LibraryView and LibraryView3
+				LibraryModel model = new LibraryModel();
+				c.setVistaModel(library, model);
 
-				LibraryView libraryView = new LibraryView(c);  // abre frame library al acabar o cancelar el borrow
 				frmBorrow.dispose();   // esto cierra frame borrow
 			}
 		});

@@ -15,6 +15,8 @@ public class BorrowBookController {
     private BorrowBookModel model;
 	private BorrowBookView view;
 	private JTable table;
+	private LibraryModel libraryModel;
+	private LibraryController c;
 
 
     public BorrowBookController(BorrowBookModel model) {
@@ -22,8 +24,7 @@ public class BorrowBookController {
         this.view = view;
         }
     
-
-
+   
 	public void getBooks(DefaultListModel<String> modelList) {
         List<Object[]> listaVisualizar = model.getBooksModel();
         modelList.clear(); // Limpiar antes de actualizar la lista
@@ -104,9 +105,11 @@ public class BorrowBookController {
           
             model.borrowBookModel(a, b);
             JOptionPane.showMessageDialog(null, "Préstamo registrado correctamente.");
+			//LibraryView libraryView = new LibraryView(c);
         } else {
             // Si cancela, simplemente vuelve a la ventana anterior (cerrando el popup)
             JOptionPane.showMessageDialog(null, "Préstamo cancelado.");
+			//LibraryView libraryView = new LibraryView(c);
         
 		
 

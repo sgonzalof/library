@@ -188,21 +188,6 @@ public class SwingMain {
 	    loginPanel.add(passwordField);
 	    passwordField.setBackground(new Color(67, 80, 85));
 	    
-
-
-
-
-
-
-
-
-
-
-
-		
-		
-		
-		
 		
 		JPanel topPanel = new JPanel();
 		topPanel.setBounds(10, 200, 1044, 50);
@@ -214,9 +199,8 @@ public class SwingMain {
 		
 		LibraryButtons btnNewButton = new LibraryButtons("WELCOME TO THE LIBRARY MANAGER");
 		btnNewButton.addActionListener(new ActionListener() {
+			
 			public void actionPerformed(ActionEvent e) {		// button that opens a new view of the library
-
-				
 
 				LibraryController controller = new LibraryController();
 				LibraryView library = new LibraryView(controller); // switch between LibraryView and LibraryView3

@@ -28,16 +28,9 @@ public class LibraryController {
         getTable1(); // Llama a getTable1() para cargar los datos
         getTable2();
 	}
-	/*
-	public void setBorrowModel(BorrowBookView bV, LibraryModel bM) {
-		this.borrowM = bM;
-		this.borrowV = bV;
-		//no hay inicializacion especifica del modelo, solo de la vista
-		this.view.getFrame().setVisible(true);
-
-	}
-	*/
 	
+	
+
 	
 	//a partir de aqui, implementamos los metodos de las funcionalidades correspondientes
 	

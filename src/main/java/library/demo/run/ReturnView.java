@@ -67,10 +67,13 @@ public class ReturnView {
 		JButton returnBtn = new JButton("RETURN");
 		returnBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				LibraryController c = new LibraryController();
+				LibraryView library = new LibraryView(c); // switch between LibraryView and LibraryView3
+				LibraryModel model = new LibraryModel();
+				c.setVistaModel(library, model);
 
-			
 
-				LibraryView libraryView = new LibraryView(c);  // abre frame library al acabar o cancelar el borrow
 				frmReturn.dispose();   // esto cierra frame borrow
 			}
 		});

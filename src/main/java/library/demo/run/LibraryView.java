@@ -51,7 +51,7 @@ public class LibraryView {
 	
 	private void initialize(LibraryController c) {
 		this.controller = c;
-		
+		/*
 		modelTable1 = new DefaultTableModel(
 				new Object[][] {
 					{null, null, null, null, null, null},
@@ -62,17 +62,16 @@ public class LibraryView {
 				
 			);
 		
-		
-		modelTable2 = new DefaultTableModel(
-				new Object[][] {
-					{null, null, null, null, null, null, null},
-				},
-				new String[] {
-					"ID", "NAME", "IS STAFF", "BIRTHDATE", "CAT", "TLF", "HAS BOOKS"
-				}
+*/
+		modelTable1 = new DefaultTableModel(
+			    null,
+			    new String[] {"ISBN", "TITLE", "WRITER", "YEAR", "CAT", "IS BORROWED"}
 			);
 		
-		
+		modelTable2 = new DefaultTableModel(
+			    null,
+			    new String[] {"ID", "NAME", "IS STAFF", "BIRTHDATE", "CAT", "TLF", "HAS BOOKS"}
+			);
 		
   
 
@@ -83,7 +82,7 @@ public class LibraryView {
 		frmLibrary.setBounds(40, 40, 1080, 660);
 		frmLibrary.getContentPane().setLayout(null);
 		frmLibrary.getContentPane().setBackground(Color.DARK_GRAY);
-		frmLibrary.setVisible(true);
+		//frmLibrary.setVisible(true);
 		
 		
 		
@@ -117,8 +116,6 @@ public class LibraryView {
 				
 				BorrowBookModel modelBorrow = new BorrowBookModel();
 				BorrowBookController controllerBorrow = new BorrowBookController(modelBorrow);
-
-				
 				BorrowBookView borrowView = new BorrowBookView(controllerBorrow); // switch between LibraryView and LibraryView3
 
 				//controllerBorrow.setBorrowModel(borrowView, model);
@@ -141,8 +138,6 @@ public class LibraryView {
 				
 				ReturnModel modelReturn = new ReturnModel();
 				ReturnController controllerReturn = new ReturnController(modelReturn);
-
-				
 				ReturnView returnView = new ReturnView(controllerReturn); 
 
 				//controllerBorrow.setBorrowModel(borrowView, model);
@@ -311,6 +306,9 @@ public class LibraryView {
 		table_2 = new JTable();
 		table_2.setModel(modelTable2);
 		scrollPane2.setViewportView(table_2);
+		
+		
+		frmLibrary.setVisible(true);
 		
 
 			

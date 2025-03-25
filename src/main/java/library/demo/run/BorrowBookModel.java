@@ -74,6 +74,13 @@ public class BorrowBookModel {
 	    }
 
 	    String sql = "INSERT INTO borrow (title, name, idMember, isbn, borrowDate, returnDate) VALUES (?,?,?,?,?,?)";
+	    //String sql1 = "REPLACE borrowed  " seguir aqui reemplazar borrowed de tabla books y hasABook de members....
+	    /*
+	     * 
+	     * seguir aqui
+	     * 
+	     */
+	    
 	    
 	    // Obtener los valores asegurando que existen
 	    String title = bookSelected.get(0)[1].toString(); // Segunda columna del libro
