@@ -20,6 +20,8 @@ import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.JList;
 import net.miginfocom.swing.MigLayout;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class BorrowBookView {
 	
@@ -42,6 +44,10 @@ public class BorrowBookView {
 
 		 
 		frmBorrow = new JFrame();
+		JTable borrowMemberTable = new JTable();
+		JList<String> borrowBookList = new JList<>(modelList);
+
+		borrowTable = new DefaultTableModel();
 		
 		frmBorrow.setDefaultCloseOperation(frmBorrow.EXIT_ON_CLOSE);
 		frmBorrow.setTitle("BORROW BOOK VIEW");
@@ -62,6 +68,24 @@ public class BorrowBookView {
 		topPanel.setLayout(new GridLayout(0, 1, 1, 10));
 		
 		JButton borrowBtn = new JButton("BORROW");
+		borrowBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int selectedRow = borrowMemberTable.getSelectedRow(); // Obtiene la fila seleccionada
+		        String a = ""; // Declarar la variable fuera del if con un valor por defecto
+		        
+				if (selectedRow != -1) { // Verifica que haya una fila seleccionada
+				    a = borrowMemberTable.getValueAt(selectedRow, 1).toString(); // Columna 1
+				    System.out.println("Valor de borrowMemberTable: " + a);
+				} else {
+				    System.out.println("No hay fila seleccionada en borrowMemberTable.");
+				} 
+				
+				String b = borrowBookList.getSelectedValue().toString();
+				System.out.println("Valor de borrowBookList: " + b);
+
+				controller.borrowBook(a, b);
+			}
+		});
 		topPanel.add(borrowBtn);
 		
 		// --- SECOND PANTEL --- 
@@ -75,7 +99,6 @@ public class BorrowBookView {
 		secondPanel.setLayout(new MigLayout("", "[900px][150px]", "[300px]"));
 
 		
-		JList<String> borrowBookList = new JList<>(modelList);
 
         secondPanel.add(new JScrollPane(borrowBookList), "cell 0 0,grow");
         controller.getBooks(modelList);
@@ -102,8 +125,17 @@ public class BorrowBookView {
 		scrollPane.setBounds(0, 0, 2, 2);
 		thirdPanel.add(scrollPane, "cell 0 0,grow");
 
-		JTable borrowMemberTable = new JTable();
+
+		
+		borrowMemberTable.setModel(new DefaultTableModel(
+			new Object[][] {
+			},
+			new String[] {
+				"names", "id"
+			}
+		));
         controller.getMembers(borrowMemberTable);
+        
 		scrollPane.setViewportView(borrowMemberTable);
 	
 		//thirdPanel.add(borrowMemberTable, "flowx,cell 0 0,grow");

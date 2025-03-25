@@ -32,6 +32,7 @@ import org.apache.commons.dbutils.handlers.MapListHandler;
 public abstract class DbUtil {
 	/** Obtencion de la url de conexion que debe implementarse en la subclase */
 	public abstract String getUrl();
+
 	
 	/** Obtiene un objeto conexion para esta base de datos */
 	public Connection getConnection() throws SQLException {
@@ -189,7 +190,11 @@ public abstract class DbUtil {
 			//no causa excepcion intencionaamente
 		}		
 	}
+
+
+	public abstract DbUtil getInstance();
 	
+
 	
 	
 
