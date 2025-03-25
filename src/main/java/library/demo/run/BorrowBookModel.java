@@ -45,7 +45,47 @@ public class BorrowBookModel {
 		String sql = "SELECT idMember FROM members WHERE hasABook = ?"; 
         return db.executeQueryArray(sql, 0);
 	}
+	
+	
+	public List<Object[]> borrowBookModel(String a, String b) {
+	    Date date = new Date();
+	    Date returnDate = new Date();
 
+	    String sqlSelectBook = "SELECT * FROM book WHERE title = ?";
+	    List<Object[]> bookSelected = db.executeQueryArray(sqlSelectBook, b);
+
+	    String sqlSelectMember = "SELECT * FROM members WHERE idMember = ?";
+	    List<Object[]> memberSelected = db.executeQueryArray(sqlSelectMember, a);
+
+	    // Validaciones para evitar IndexOutOfBoundsException
+	    if (bookSelected.isEmpty()) {
+	        System.err.println("Error: No se encontró el libro con título: " + b);
+	        return null;
+	    }
+	    if (memberSelected.isEmpty()) {
+	        System.err.println("Error: No se encontró el miembro con ID: " + a);
+	        return null;
+	    }
+	    
+	    // Asegurar que bookSelected y memberSelected tengan suficientes elementos
+	    if (bookSelected.get(0).length < 2 || memberSelected.get(0).length < 2) {
+	        System.err.println("Error: Los datos recuperados no son suficientes.");
+	        return null;
+	    }
+
+	    String sql = "INSERT INTO borrow (title, name, idMember, isbn, borrowDate, returnDate) VALUES (?,?,?,?,?,?)";
+	    
+	    // Obtener los valores asegurando que existen
+	    String title = bookSelected.get(0)[1].toString(); // Segunda columna del libro
+	    String memberName = memberSelected.get(0)[1].toString(); // Segunda columna del miembro
+	    String memberId = memberSelected.get(0)[0].toString(); // Primera columna del miembro
+	    int isbn = Integer.parseInt(bookSelected.get(0)[0].toString()); // Primera columna del libro
+
+	    db.executeUpdate(sql, title, memberName, memberId, isbn, date.toString(), returnDate.toString());
+
+	    return bookSelected;
+	}
+/*
 	public List<Object[]> borrowBookModel(String a, String b) {
 		
 		Date date = new Date();
@@ -57,16 +97,18 @@ public class BorrowBookModel {
 		String sqlSelectMember = "SELECT * FROM members WHERE idMember = ?";
 		List<Object[]> memberSelected = db.executeQueryArray(sqlSelectMember, a);
 		
-		String sql = "INSERT INTO borrow (title, name, idMember, isbn, borrowDate, returnDate) VALUES = (?,?,?,?,?,?)";
-		return db.executeQueryArray(sql, bookSelected.get(1), memberSelected.get(1),
-				memberSelected.get(0), bookSelected.get(0), date.toString(), returnDate.toString());
+		String sql = "INSERT INTO borrow (title, name, idMember, isbn, borrowDate, returnDate) VALUES (?,?,?,?,?,?)";
+		db.executeUpdate(sql, bookSelected.get(1).toString(), memberSelected.get(1).toString(),
+				memberSelected.get(0).toString(), Integer.parseInt(bookSelected.get(0).toString()), date.toString(), returnDate.toString());
+		
+		return bookSelected;
 		
 		
 		
 				
 		
 	}
-
+*/
 		
 }
 

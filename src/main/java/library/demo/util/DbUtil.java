@@ -192,7 +192,7 @@ public abstract class DbUtil {
 	}
 
 
-	public abstract DbUtil getInstance();
+
 	
 
 	
