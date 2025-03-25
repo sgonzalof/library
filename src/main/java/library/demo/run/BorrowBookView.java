@@ -31,7 +31,7 @@ public class BorrowBookView {
 	private DefaultTableModel borrowTable;
 	private DefaultListModel<String> modelList = new DefaultListModel<String>();
 	private JTable table;
-
+	private LibraryController c;
 
 	
 	public BorrowBookView(BorrowBookController controller) {
@@ -84,6 +84,9 @@ public class BorrowBookView {
 				System.out.println("Valor de borrowBookList: " + b);
 
 				controller.borrowBook(a, b);
+
+				LibraryView libraryView = new LibraryView(c);  // abre frame library al acabar o cancelar el borrow
+				frmBorrow.dispose();   // esto cierra frame borrow
 			}
 		});
 		topPanel.add(borrowBtn);

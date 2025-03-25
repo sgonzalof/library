@@ -38,6 +38,10 @@ public class LibraryView {
 	private DefaultTableModel modelTable1;
 	private DefaultTableModel modelTable2;
 	private Database db;
+	
+	private ReturnView returnView;
+	private ReturnController controllerReturn;
+	private ReturnModel modelReturn;
 
 
 	
@@ -118,7 +122,7 @@ public class LibraryView {
 				BorrowBookView borrowView = new BorrowBookView(controllerBorrow); // switch between LibraryView and LibraryView3
 
 				//controllerBorrow.setBorrowModel(borrowView, model);
-				frmLibrary.dispose();   // esto cerraba la ventana de login
+				frmLibrary.dispose();   // cierra frame library
 				
 				
 				}	
@@ -131,6 +135,20 @@ public class LibraryView {
 		// --- RETURN BTN ---
 		
 		LibraryButtons returnBookButton = new LibraryButtons("Return Book");
+		returnBookButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				
+				ReturnModel modelReturn = new ReturnModel();
+				ReturnController controllerReturn = new ReturnController(modelReturn);
+
+				
+				ReturnView returnView = new ReturnView(controllerReturn); 
+
+				//controllerBorrow.setBorrowModel(borrowView, model);
+				frmLibrary.dispose();   // cierra frame library
+			}
+		});
 		returnBookButton.setFocusable(false);
 		returnBookButton.setBackground(new Color(53, 56, 56)); // Change button background to red
 		returnBookButton.setForeground(new Color(255, 255, 255));

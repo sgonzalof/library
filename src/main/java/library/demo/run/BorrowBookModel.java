@@ -83,32 +83,11 @@ public class BorrowBookModel {
 
 	    db.executeUpdate(sql, title, memberName, memberId, isbn, date.toString(), returnDate.toString());
 
+	    System.out.printf("%s, %s, %s - datos del registro en tabla borrow%n", title, memberName, memberId);
 	    return bookSelected;
+	    
+	    
 	}
-/*
-	public List<Object[]> borrowBookModel(String a, String b) {
-		
-		Date date = new Date();
-		Date returnDate = new Date();
-		
-		String sqlSelectBook = "SELECT * FROM book WHERE title = ?";
-		List<Object[]> bookSelected = db.executeQueryArray(sqlSelectBook, b);
-		
-		String sqlSelectMember = "SELECT * FROM members WHERE idMember = ?";
-		List<Object[]> memberSelected = db.executeQueryArray(sqlSelectMember, a);
-		
-		String sql = "INSERT INTO borrow (title, name, idMember, isbn, borrowDate, returnDate) VALUES (?,?,?,?,?,?)";
-		db.executeUpdate(sql, bookSelected.get(1).toString(), memberSelected.get(1).toString(),
-				memberSelected.get(0).toString(), Integer.parseInt(bookSelected.get(0).toString()), date.toString(), returnDate.toString());
-		
-		return bookSelected;
-		
-		
-		
-				
-		
-	}
-*/
-		
+	
 }
 
