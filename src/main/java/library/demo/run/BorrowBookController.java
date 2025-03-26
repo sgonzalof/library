@@ -95,6 +95,9 @@ public class BorrowBookController {
 
         if (confirm == JOptionPane.YES_OPTION) {
             // Si el usuario acepta, guardar en la base de datos
+        	
+        	
+        	
           
             model.borrowBookModel(a, b);
             JOptionPane.showMessageDialog(null, "Préstamo registrado correctamente.");

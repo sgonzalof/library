@@ -95,10 +95,11 @@ public class BorrowBookView {
 				frmBorrow.dispose();   // esto cierra frame borrow
 			}
 		});
+		
+		
 		topPanel.add(borrowBtn);
 		
-		// --- SECOND PANTEL --- 
-		//   ---BOOK PANEL --- book JList - select book btn
+		// --- SECOND PANTEL ---  		//   ---BOOK PANEL --- book JList - select book btn
 		
 		
 		JPanel secondPanel = new JPanel();
