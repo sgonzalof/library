@@ -13,6 +13,7 @@ import org.apache.commons.dbutils.handlers.BeanListHandler;
 import library.demo.util.Database;
 import library.demo.util.DbUtil;
 
+
 import java.util.Date;
 
 public class BorrowBookModel {
@@ -74,12 +75,8 @@ public class BorrowBookModel {
 	    }
 
 	    String sql = "INSERT INTO borrow (title, name, idMember, isbn, borrowDate, returnDate) VALUES (?,?,?,?,?,?)";
-	    //String sql1 = "REPLACE borrowed  " seguir aqui reemplazar borrowed de tabla books y hasABook de members....
-	    /*
-	     * 
-	     * seguir aqui
-	     * 
-	     */
+	    String sql1 = "UPDATE book SET borrowed = 1 WHERE isbn = ?";
+	    String sql2 = "UPDATE members SET hasABook = 1 WHERE idMember = ?";
 	    
 	    
 	    // Obtener los valores asegurando que existen
@@ -89,12 +86,14 @@ public class BorrowBookModel {
 	    int isbn = Integer.parseInt(bookSelected.get(0)[0].toString()); // Primera columna del libro
 
 	    db.executeUpdate(sql, title, memberName, memberId, isbn, date.toString(), returnDate.toString());
+	    db.executeUpdate(sql1, isbn);
+	    db.executeUpdate(sql2, memberId);
 
 	    System.out.printf("%s, %s, %s - datos del registro en tabla borrow%n", title, memberName, memberId);
 	    return bookSelected;
 	    
 	    
 	}
-	
+
 }
 

@@ -110,11 +110,10 @@ public class BorrowBookController {
             // Si cancela, simplemente vuelve a la ventana anterior (cerrando el popup)
             JOptionPane.showMessageDialog(null, "Préstamo cancelado.");
 			//LibraryView libraryView = new LibraryView(c);
-        
-		
-
-        
+                
         }
+
+
         
         
         
