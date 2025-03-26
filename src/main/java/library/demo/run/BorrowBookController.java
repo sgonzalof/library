@@ -71,19 +71,12 @@ public class BorrowBookController {
 
 	    // Llenar la tabla con los datos de las listas
 	    for ( i = 0; i < listaNames.size(); i++) {
-	       // Object[] filaId = listaNames.get(i);
-	       // Object[] filaNames = listaNames.get(i);
 
-	        //if (filaId.length > 0 && filaNames.length > 0 && filaId[0] != null && filaNames[0] != null) {
-	          //  membersMap.put(filaId[0], filaNames[0].toString());
-	            //tableModel.addRow(new Object[]{filaId[0], filaNames[0]}); // Agregar fila a la JTable
-	       // }
-	    //}
-	    Object[] componente = listaNames.get(i);
+	    	Object[] componente = listaNames.get(i);
 
 	    // Mostrar los datos del diccionario en la consola (opcional)
-	    System.out.println("ID: " + componente[0].toString() + " - Nombre: " + componente[1].toString());
-	}
+	    	System.out.println("ID: " + componente[0].toString() + " - Nombre: " + componente[1].toString());
+	    }
 
 	}
 

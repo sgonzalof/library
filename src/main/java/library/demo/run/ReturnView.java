@@ -26,6 +26,7 @@ public class ReturnView {
 	private DefaultListModel<String> modelList = new DefaultListModel<String>();
 	private JTable table;
 	private LibraryController c;
+	private JTable tableBorrows;
 
 	
 	public ReturnView (ReturnController controller) {
@@ -42,7 +43,6 @@ public class ReturnView {
 		 
 		frmReturn = new JFrame();
 		JTable borrowMemberTable = new JTable();
-		JList<String> borrowBookList = new JList<>(modelList);
 
 		borrowTable = new DefaultTableModel();
 		
@@ -68,19 +68,40 @@ public class ReturnView {
 		returnBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
+				int selectedRow = tableBorrows.getSelectedRow(); // Obtiene la fila seleccionada
+				
+		        String a = ""; // Declarar la variable fuera del if con un valor por defecto
+		        String b ="";
+		        String isbn = "";
+		        String idMember = "";
+		        
+				if (selectedRow != -1) { // Verifica que haya una fila seleccionada
+				    a = tableBorrows.getValueAt(selectedRow, 0).toString(); 
+				    b = tableBorrows.getValueAt(selectedRow, 1).toString(); 
+				    isbn = tableBorrows.getValueAt(selectedRow, 3).toString(); 
+				    idMember = tableBorrows.getValueAt(selectedRow, 2).toString(); 
+				    System.out.println("Valor de tableBorrows: " + a + ", "+ isbn +", "+ b +", " + idMember );
+				} else {
+				    System.out.println("No hay fila seleccionada en borrowMemberTable.");
+				} 
+				
+				
+				controller.returnBook(isbn,idMember);
+				
 				LibraryController c = new LibraryController();
 				LibraryView library = new LibraryView(c); // switch between LibraryView and LibraryView3
 				LibraryModel model = new LibraryModel();
 				c.setVistaModel(library, model);
 
 
-				frmReturn.dispose();   // esto cierra frame borrow
+				frmReturn.dispose();   // esto cierra frame return
 			}
 		});
+		
 		topPanel.add(returnBtn);
 		
 		// --- SECOND PANTEL --- 
-		//   ---BOOK PANEL --- book JList - select book btn
+		//   ---BORROWS PANEL --- borrows table
 		
 		
 		JPanel secondPanel = new JPanel();
@@ -88,10 +109,22 @@ public class ReturnView {
 		secondPanel.setVisible(true);
 		frmReturn.getContentPane().add(secondPanel);
 		secondPanel.setLayout(new MigLayout("", "[900px][150px]", "[300px]"));
-
 		
 
-        secondPanel.add(new JScrollPane(borrowBookList), "cell 0 0,grow");
+        JScrollPane scrollPane = new JScrollPane();
+        secondPanel.add(scrollPane, "cell 0 0,grow");
+        
+        tableBorrows = new JTable();
+        tableBorrows.setModel(new DefaultTableModel(
+        	new Object[][] {
+        	},
+        	new String[] {
+        		"Title", "name", "idMember", "isbn", "Borrow Date", "Return Date"
+        	}
+        ));
+        scrollPane.setViewportView(tableBorrows);
+        
+        controller.getBorrows(tableBorrows);
 
         
 
@@ -102,15 +135,8 @@ public class ReturnView {
 		selectBookBtn.setSize(2, 50);
 		secondPanel.add(selectBookBtn, "cell 1 0,alignx center,aligny center");
 		
-		
+	}
 		 
 		
-	}
-
-
-
-
-		
 	
-
 }

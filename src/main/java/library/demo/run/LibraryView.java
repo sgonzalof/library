@@ -51,25 +51,18 @@ public class LibraryView {
 	
 	private void initialize(LibraryController c) {
 		this.controller = c;
-		/*
+
 		modelTable1 = new DefaultTableModel(
 				new Object[][] {
 					{null, null, null, null, null, null},
 				},
-				new String[] {
-					"ISBN", "TITLE", "WRITER", "YEAR", "CAT", "IS BORROWED"
-				}
-				
-			);
-		
-*/
-		modelTable1 = new DefaultTableModel(
-			    null,
 			    new String[] {"ISBN", "TITLE", "WRITER", "YEAR", "CAT", "IS BORROWED"}
 			);
 		
 		modelTable2 = new DefaultTableModel(
-			    null,
+				new Object[][] {
+					{null, null, null, null, null, null},
+				},
 			    new String[] {"ID", "NAME", "IS STAFF", "BIRTHDATE", "CAT", "TLF", "HAS BOOKS"}
 			);
 		

@@ -147,14 +147,7 @@ public class BorrowBookView {
         
 		scrollPane.setViewportView(borrowMemberTable);
 	
-		//thirdPanel.add(borrowMemberTable, "flowx,cell 0 0,grow");
-		
 
-        //thirdPanel.add(new JScrollPane(borrowMemberTable), "cell 0 0,grow");
-
-
-
-		
 		
 		JButton selectMemberBtn = new JButton("Select member");
 		thirdPanel.add(selectMemberBtn, "cell 1 0");
