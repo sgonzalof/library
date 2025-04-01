@@ -131,9 +131,11 @@ public class BorrowBookView {
 		thirdPanel.setLayout(new MigLayout("", "[900px][150px]", "[300px,grow]"));
 		
 		
-		JScrollPane scrollPane = new JScrollPane();
+		JScrollPane scrollPane = new JScrollPane(); 
 		scrollPane.setBounds(0, 0, 2, 2);
 		thirdPanel.add(scrollPane, "cell 0 0,grow");
+		
+		
 
 
 		
